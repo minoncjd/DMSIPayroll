@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="76fb663d9b3e426e84f362011e78b2f1" Name="Diagram1" ZoomLevel="66">
+        <EntityTypeShape EntityType="DMSIPayrollModel.Company" Width="1.5" PointX="1.5" PointY="10.375" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.EmployeePosition" Width="1.5" PointX="1.5" PointY="8" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.IncomeType" Width="1.5" PointX="7" PointY="6.25" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Loan" Width="1.5" PointX="8.625" PointY="2.875" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.LoanType" Width="1.5" PointX="8.625" PointY="6.875" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Period" Width="1.5" PointX="2.5" PointY="3.625" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Loan_LoanType" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Loan_Period" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_LoanType_LoanType" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.HolidayType" Width="1.5" PointX="14" PointY="5.375" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.DeductionType" Width="1.5" PointX="14" PointY="10.875" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Deduction" Width="1.5" PointX="16.25" PointY="7.125" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Deduction_DeductionType" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Deduction_Period" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.PYSSS" Width="1.5" PointX="6.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Philhealth" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Payroll" Width="1.5" PointX="18.875" PointY="3.875" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.PYTable" Width="1.5" PointX="18.875" PointY="7.625" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Payroll_PYTable" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.PayrollDetails_Deduction" Width="1.5" PointX="21.125" PointY="8" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.PayrollDetails_Loan" Width="1.5" PointX="21.125" PointY="4.25" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Deduction_Deduction" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Loan_Loan" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Deduction_Payroll" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Loan_Payroll" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.BiometricsLog" Width="1.5" PointX="8.375" PointY="9.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Tardy" Width="1.5" PointX="21.125" PointY="0.75" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Tardy_Payroll" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.OvertimeType" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Overtime" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.NightDifferential" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.NightShiftType" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Adjustment" Width="1.5" PointX="3.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Holiday" Width="1.5" PointX="16.25" PointY="2.375" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Holidays_HolidayType" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Employee" Width="1.5" PointX="3.75" PointY="7.625" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Employee_Company" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Deduction_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Employee_EmployeePosition" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Holidays_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Loan_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Payroll_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Tardy_Employee" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Income" Width="1.5" PointX="6" PointY="13.75" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Income_Employee" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.OtherIncome" Width="1.5" PointX="11.25" PointY="5.875" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_IncomeType" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Period" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Leave" Width="1.5" PointX="24.125" PointY="7.375" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Payroll" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

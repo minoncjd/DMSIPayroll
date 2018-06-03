@@ -1,0 +1,96 @@
+﻿<Controls:MetroWindow  x:Class="DMSIPayroll.ManageIncome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" GlowBrush="Black"
+        Title="MANAGE INCOME" WindowTitleBrush="#FF707070" Height="654" Width="686.18" ResizeMode="NoResize" ShowInTaskbar="True" WindowStartupLocation="CenterScreen" ShowMaxRestoreButton="False" ShowMinButton="False" Loaded="MetroWindow_Loaded">
+
+    <Controls:MetroWindow.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+    </Controls:MetroWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" Height="40" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Button x:Name="button" Margin="2" Grid.Row="2" Click="button_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Label Content="NEW" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+
+            <Grid Grid.Column="1">
+                <Button x:Name="btnRefresh" Margin="2" Grid.Row="2" Click="btnRefresh_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_refresh}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Label Content="REFRESH" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <DataGrid FontSize="10" Margin="2"  BorderThickness="0.5"  x:Name="datagridview" AutoGenerateColumns="False"
+                      RowHeight="30" SelectionMode="Single" BorderBrush="Black" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Black" IsReadOnly="True" SelectionChanged="datagridview_SelectionChanged" LoadingRow="datagridview_LoadingRow" >
+
+                <DataGrid.ContextMenu>
+                    <ContextMenu >
+                        <MenuItem Name="edit" Click="edit_Click" >
+                            <MenuItem.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Rectangle Fill="#FF001834" Width="14.6" Height="15" Margin="-15,0,10,0">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Visual="{StaticResource appbar_edit_box}" Stretch="Fill" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <TextBlock><Run Text="Edit"/></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </MenuItem.HeaderTemplate>
+                        </MenuItem>
+                    </ContextMenu>
+
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Income Period" Width="3*" Binding="{Binding IncomePeriod, StringFormat=d}"/>
+                    <DataGridTextColumn Header="Payroll Date" Width="2*" Binding="{Binding PayrollDate, StringFormat=d}"/>
+                    <DataGridTextColumn Header="Daily Rate" Width="2*" Binding="{Binding DailyRate, StringFormat='###,###.##'}"/>
+                    <DataGridTextColumn Header="# of Days" Width="2*" Binding="{Binding NoOfDays, StringFormat='###,###.##'}"/>
+                    <DataGridTextColumn Header="Amount" Width="2*" Binding="{Binding Amount, StringFormat='###,###.##'}"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+    </Grid>
+
+</Controls:MetroWindow>

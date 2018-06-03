@@ -1,0 +1,1907 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DMSIPayrollModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adjustment">
+          <Key>
+            <PropertyRef Name="AdjustmentID" />
+          </Key>
+          <Property Name="AdjustmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="PayrollDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="PayrollID" Type="int" />
+        </EntityType>
+        <EntityType Name="BiometricsLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BiometricsID" Type="int" Nullable="false" />
+          <Property Name="DTime" Type="datetime" Nullable="false" />
+          <Property Name="Mode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deduction">
+          <Key>
+            <PropertyRef Name="DeductionID" />
+          </Key>
+          <Property Name="DeductionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="PeriodID" Type="int" Nullable="false" />
+          <Property Name="DeductionTypeID" Type="int" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="Amortization" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeductionType">
+          <Key>
+            <PropertyRef Name="DeductionTypeID" />
+          </Key>
+          <Property Name="DeductionTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeductionCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeePositionID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="Birthdate" Type="date" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateHired" Type="date" />
+          <Property Name="DateResigned" Type="date" />
+          <Property Name="BiometricsID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="PayrollType" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="EmployeePositionID" />
+          </Key>
+          <Property Name="EmployeePositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DailyRate" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Holidays">
+          <Key>
+            <PropertyRef Name="HolidayID" />
+          </Key>
+          <Property Name="HolidayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="HolidayTypeID" Type="int" Nullable="false" />
+          <Property Name="PayrollDate" Type="date" Nullable="false" />
+          <Property Name="NoOfDays" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="PayrollID" Type="int" />
+        </EntityType>
+        <EntityType Name="HolidayType">
+          <Key>
+            <PropertyRef Name="HolidayTypeID" />
+          </Key>
+          <Property Name="HolidayTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HolidayCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Multiplier" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="IncomeID" />
+          </Key>
+          <Property Name="IncomeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="PayrollDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="NoOfDays" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="PayrollID" Type="int" />
+          <Property Name="Trip" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IncomeType">
+          <Key>
+            <PropertyRef Name="IncomeTypeID" />
+          </Key>
+          <Property Name="IncomeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IncomeTypeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="PayrollDate" Type="date" Nullable="false" />
+          <Property Name="PayrollID" Type="int" />
+          <Property Name="Value" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loan">
+          <Key>
+            <PropertyRef Name="LoanID" />
+          </Key>
+          <Property Name="LoanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="LoanTypeID" Type="int" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="PeriodID" Type="int" Nullable="false" />
+          <Property Name="PrincipalAmount" Type="money" Nullable="false" />
+          <Property Name="TotalLoanAmount" Type="money" Nullable="false" />
+          <Property Name="TotalPayment" Type="money" Nullable="false" />
+          <Property Name="Amortization" Type="money" Nullable="false" />
+          <Property Name="LoanBalance" Type="money" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="LoanType">
+          <Key>
+            <PropertyRef Name="LoanTypeID" />
+          </Key>
+          <Property Name="LoanTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoanTypeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NightDifferential">
+          <Key>
+            <PropertyRef Name="NightDifferentialID" />
+          </Key>
+          <Property Name="NightDifferentialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="NightShiftTypeID" Type="int" Nullable="false" />
+          <Property Name="PayrollDate" Type="date" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="PayrollID" Type="int" />
+        </EntityType>
+        <EntityType Name="NightShiftType">
+          <Key>
+            <PropertyRef Name="NightShiftTypeID" />
+          </Key>
+          <Property Name="NightShiftTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NightShiftTypeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Multiplier" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OtherIncome">
+          <Key>
+            <PropertyRef Name="OtherIncomeID" />
+          </Key>
+          <Property Name="OtherIncomeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="IncomeTypeID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="PeriodID" Type="int" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Overtime">
+          <Key>
+            <PropertyRef Name="OvertimeID" />
+          </Key>
+          <Property Name="OvertimeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeID" Type="int" Nullable="false" />
+          <Property Name="OvertimeTypeID" Type="int" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="PayrollDate" Type="date" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="PayrollID" Type="int" />
+        </EntityType>
+        <EntityType Name="OvertimeType">
+          <Key>
+            <PropertyRef Name="OvertimeTypeID" />
+          </Key>
+          <Property Name="OvertimeTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OvertimeTypeCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Multiplier" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Payroll">
+          <Key>
+            <PropertyRef Name="PayrollID" />
+          </Key>
+          <Property Name="PayrollID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PYTableID" Type="int" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="BasicPay" Type="money" Nullable="false" />
+          <Property Name="Holiday" Type="money" Nullable="false" />
+          <Property Name="Adjustment" Type="money" Nullable="false" />
+          <Property Name="Gross" Type="money" Nullable="false" />
+          <Property Name="Premium" Type="money" Nullable="false" />
+          <Property Name="Deduction" Type="money" Nullable="false" />
+          <Property Name="Loan" Type="money" Nullable="false" />
+          <Property Name="Net" Type="money" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="PayrollDetails_Deduction">
+          <Key>
+            <PropertyRef Name="PayrollDetails_DeductionID" />
+          </Key>
+          <Property Name="PayrollDetails_DeductionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayrollID" Type="int" Nullable="false" />
+          <Property Name="DeductionID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PayrollDetails_Loan">
+          <Key>
+            <PropertyRef Name="PayrollDetails_LoanID" />
+          </Key>
+          <Property Name="PayrollDetails_LoanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PayrollID" Type="int" Nullable="false" />
+          <Property Name="LoanID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="PeriodID" />
+          </Key>
+          <Property Name="PeriodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PeriodCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PeriodDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Philhealth">
+          <Key>
+            <PropertyRef Name="PHID" />
+          </Key>
+          <Property Name="PHID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinSalary" Type="money" />
+          <Property Name="MaxSalary" Type="money" />
+          <Property Name="Ee" Type="money" />
+          <Property Name="Er" Type="money" />
+        </EntityType>
+        <EntityType Name="PYSSS">
+          <Key>
+            <PropertyRef Name="PYSSSID" />
+          </Key>
+          <Property Name="PYSSSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinSalary" Type="money" />
+          <Property Name="MaxSalary" Type="money" />
+          <Property Name="Er" Type="money" />
+          <Property Name="Ec" Type="money" />
+          <Property Name="Ee" Type="money" />
+          <Property Name="Amount" Type="money" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="PYTable">
+          <Key>
+            <PropertyRef Name="PYTableID" />
+          </Key>
+          <Property Name="PYTableID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PYCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="StDate" Type="date" Nullable="false" />
+          <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="PYDate" Type="date" Nullable="false" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Tardy">
+          <Key>
+            <PropertyRef Name="TardyID" />
+          </Key>
+          <Property Name="TardyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="PayrollDate" Type="date" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="PayrollID" Type="int" />
+        </EntityType>
+        <Association Name="FK_Deduction_DeductionType">
+          <End Role="DeductionType" Type="Self.DeductionType" Multiplicity="1" />
+          <End Role="Deduction" Type="Self.Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeductionType">
+              <PropertyRef Name="DeductionTypeID" />
+            </Principal>
+            <Dependent Role="Deduction">
+              <PropertyRef Name="DeductionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deduction_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Deduction" Type="Self.Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Deduction">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deduction_Period">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="Deduction" Type="Self.Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="Deduction">
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmployeePosition">
+          <End Role="EmployeePosition" Type="Self.EmployeePosition" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="EmployeePositionID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeePositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Holidays_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Holidays" Type="Self.Holidays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Holidays">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Holidays_HolidayType">
+          <End Role="HolidayType" Type="Self.HolidayType" Multiplicity="1" />
+          <End Role="Holidays" Type="Self.Holidays" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayType">
+              <PropertyRef Name="HolidayTypeID" />
+            </Principal>
+            <Dependent Role="Holidays">
+              <PropertyRef Name="HolidayTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Income_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Income" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Payroll">
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="0..1" />
+          <End Role="Leave" Type="Self.Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loan_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loan_LoanType">
+          <End Role="LoanType" Type="Self.LoanType" Multiplicity="1" />
+          <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanType">
+              <PropertyRef Name="LoanTypeID" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="LoanTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loan_Period">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="Loan" Type="Self.Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanType_LoanType">
+          <End Role="LoanType" Type="Self.LoanType" Multiplicity="1" />
+          <End Role="LoanType1" Type="Self.LoanType" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanType">
+              <PropertyRef Name="LoanTypeID" />
+            </Principal>
+            <Dependent Role="LoanType1">
+              <PropertyRef Name="LoanTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherIncome_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="OtherIncome" Type="Self.OtherIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="OtherIncome">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherIncome_IncomeType">
+          <End Role="IncomeType" Type="Self.IncomeType" Multiplicity="1" />
+          <End Role="OtherIncome" Type="Self.OtherIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeType">
+              <PropertyRef Name="IncomeTypeID" />
+            </Principal>
+            <Dependent Role="OtherIncome">
+              <PropertyRef Name="IncomeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherIncome_Period">
+          <End Role="Period" Type="Self.Period" Multiplicity="1" />
+          <End Role="OtherIncome" Type="Self.OtherIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="OtherIncome">
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payroll_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Payroll">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payroll_PYTable">
+          <End Role="PYTable" Type="Self.PYTable" Multiplicity="0..1" />
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PYTable">
+              <PropertyRef Name="PYTableID" />
+            </Principal>
+            <Dependent Role="Payroll">
+              <PropertyRef Name="PYTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayrollDetails_Deduction_Deduction">
+          <End Role="Deduction" Type="Self.Deduction" Multiplicity="1" />
+          <End Role="PayrollDetails_Deduction" Type="Self.PayrollDetails_Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deduction">
+              <PropertyRef Name="DeductionID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Deduction">
+              <PropertyRef Name="DeductionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayrollDetails_Deduction_Payroll">
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="1" />
+          <End Role="PayrollDetails_Deduction" Type="Self.PayrollDetails_Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Deduction">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayrollDetails_Loan_Loan">
+          <End Role="Loan" Type="Self.Loan" Multiplicity="1" />
+          <End Role="PayrollDetails_Loan" Type="Self.PayrollDetails_Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loan">
+              <PropertyRef Name="LoanID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Loan">
+              <PropertyRef Name="LoanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayrollDetails_Loan_Payroll">
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="1" />
+          <End Role="PayrollDetails_Loan" Type="Self.PayrollDetails_Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Loan">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tardy_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Tardy" Type="Self.Tardy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Tardy">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tardy_Payroll">
+          <End Role="Payroll" Type="Self.Payroll" Multiplicity="0..1" />
+          <End Role="Tardy" Type="Self.Tardy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="Tardy">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetEmployeeDTR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="startDate" Type="varchar" Mode="In" />
+          <Parameter Name="endDate" Type="varchar" Mode="In" />
+          <Parameter Name="bioid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="DMSIPayrollModelStoreContainer">
+          <EntitySet Name="Adjustment" EntityType="Self.Adjustment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BiometricsLog" EntityType="Self.BiometricsLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deduction" EntityType="Self.Deduction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeductionType" EntityType="Self.DeductionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeePosition" EntityType="Self.EmployeePosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Holidays" EntityType="Self.Holidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HolidayType" EntityType="Self.HolidayType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncomeType" EntityType="Self.IncomeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Leave" EntityType="Self.Leave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loan" EntityType="Self.Loan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoanType" EntityType="Self.LoanType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NightDifferential" EntityType="Self.NightDifferential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NightShiftType" EntityType="Self.NightShiftType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtherIncome" EntityType="Self.OtherIncome" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Overtime" EntityType="Self.Overtime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OvertimeType" EntityType="Self.OvertimeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payroll" EntityType="Self.Payroll" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayrollDetails_Deduction" EntityType="Self.PayrollDetails_Deduction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayrollDetails_Loan" EntityType="Self.PayrollDetails_Loan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Period" EntityType="Self.Period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Philhealth" EntityType="Self.Philhealth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PYSSS" EntityType="Self.PYSSS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PYTable" EntityType="Self.PYTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tardy" EntityType="Self.Tardy" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Deduction_DeductionType" Association="Self.FK_Deduction_DeductionType">
+            <End Role="DeductionType" EntitySet="DeductionType" />
+            <End Role="Deduction" EntitySet="Deduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deduction_Employee" Association="Self.FK_Deduction_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Deduction" EntitySet="Deduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deduction_Period" Association="Self.FK_Deduction_Period">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="Deduction" EntitySet="Deduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Company" Association="Self.FK_Employee_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmployeePosition" Association="Self.FK_Employee_EmployeePosition">
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Holidays_Employee" Association="Self.FK_Holidays_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Holidays" EntitySet="Holidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Holidays_HolidayType" Association="Self.FK_Holidays_HolidayType">
+            <End Role="HolidayType" EntitySet="HolidayType" />
+            <End Role="Holidays" EntitySet="Holidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Income_Employee" Association="Self.FK_Income_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Income" EntitySet="Income" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Employee" Association="Self.FK_Leave_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Payroll" Association="Self.FK_Leave_Payroll">
+            <End Role="Payroll" EntitySet="Payroll" />
+            <End Role="Leave" EntitySet="Leave" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loan_Employee" Association="Self.FK_Loan_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Loan" EntitySet="Loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loan_LoanType" Association="Self.FK_Loan_LoanType">
+            <End Role="LoanType" EntitySet="LoanType" />
+            <End Role="Loan" EntitySet="Loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loan_Period" Association="Self.FK_Loan_Period">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="Loan" EntitySet="Loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanType_LoanType" Association="Self.FK_LoanType_LoanType">
+            <End Role="LoanType" EntitySet="LoanType" />
+            <End Role="LoanType1" EntitySet="LoanType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherIncome_Employee" Association="Self.FK_OtherIncome_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="OtherIncome" EntitySet="OtherIncome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherIncome_IncomeType" Association="Self.FK_OtherIncome_IncomeType">
+            <End Role="IncomeType" EntitySet="IncomeType" />
+            <End Role="OtherIncome" EntitySet="OtherIncome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherIncome_Period" Association="Self.FK_OtherIncome_Period">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="OtherIncome" EntitySet="OtherIncome" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payroll_Employee" Association="Self.FK_Payroll_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Payroll" EntitySet="Payroll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payroll_PYTable" Association="Self.FK_Payroll_PYTable">
+            <End Role="PYTable" EntitySet="PYTable" />
+            <End Role="Payroll" EntitySet="Payroll" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayrollDetails_Deduction_Deduction" Association="Self.FK_PayrollDetails_Deduction_Deduction">
+            <End Role="Deduction" EntitySet="Deduction" />
+            <End Role="PayrollDetails_Deduction" EntitySet="PayrollDetails_Deduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayrollDetails_Deduction_Payroll" Association="Self.FK_PayrollDetails_Deduction_Payroll">
+            <End Role="Payroll" EntitySet="Payroll" />
+            <End Role="PayrollDetails_Deduction" EntitySet="PayrollDetails_Deduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayrollDetails_Loan_Loan" Association="Self.FK_PayrollDetails_Loan_Loan">
+            <End Role="Loan" EntitySet="Loan" />
+            <End Role="PayrollDetails_Loan" EntitySet="PayrollDetails_Loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayrollDetails_Loan_Payroll" Association="Self.FK_PayrollDetails_Loan_Payroll">
+            <End Role="Payroll" EntitySet="Payroll" />
+            <End Role="PayrollDetails_Loan" EntitySet="PayrollDetails_Loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tardy_Employee" Association="Self.FK_Tardy_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Tardy" EntitySet="Tardy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tardy_Payroll" Association="Self.FK_Tardy_Payroll">
+            <End Role="Payroll" EntitySet="Payroll" />
+            <End Role="Tardy" EntitySet="Tardy" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DMSIPayrollModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DMSIPayrollEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Companies" EntityType="DMSIPayrollModel.Company" />
+          <EntitySet Name="EmployeePositions" EntityType="DMSIPayrollModel.EmployeePosition" />
+          <EntitySet Name="IncomeTypes" EntityType="DMSIPayrollModel.IncomeType" />
+          <EntitySet Name="Loans" EntityType="DMSIPayrollModel.Loan" />
+          <EntitySet Name="LoanTypes" EntityType="DMSIPayrollModel.LoanType" />
+          <EntitySet Name="Periods" EntityType="DMSIPayrollModel.Period" />
+          <AssociationSet Name="FK_Loan_LoanType" Association="DMSIPayrollModel.FK_Loan_LoanType">
+            <End Role="LoanType" EntitySet="LoanTypes" />
+            <End Role="Loan" EntitySet="Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loan_Period" Association="DMSIPayrollModel.FK_Loan_Period">
+            <End Role="Period" EntitySet="Periods" />
+            <End Role="Loan" EntitySet="Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanType_LoanType" Association="DMSIPayrollModel.FK_LoanType_LoanType">
+            <End Role="LoanType" EntitySet="LoanTypes" />
+            <End Role="LoanType1" EntitySet="LoanTypes" />
+          </AssociationSet>
+          <EntitySet Name="HolidayTypes" EntityType="DMSIPayrollModel.HolidayType" />
+          <EntitySet Name="DeductionTypes" EntityType="DMSIPayrollModel.DeductionType" />
+          <EntitySet Name="Deductions" EntityType="DMSIPayrollModel.Deduction" />
+          <AssociationSet Name="FK_Deduction_DeductionType" Association="DMSIPayrollModel.FK_Deduction_DeductionType">
+            <End Role="DeductionType" EntitySet="DeductionTypes" />
+            <End Role="Deduction" EntitySet="Deductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deduction_Period" Association="DMSIPayrollModel.FK_Deduction_Period">
+            <End Role="Period" EntitySet="Periods" />
+            <End Role="Deduction" EntitySet="Deductions" />
+          </AssociationSet>
+          <EntitySet Name="PYSSSes" EntityType="DMSIPayrollModel.PYSSS" />
+          <EntitySet Name="Philhealths" EntityType="DMSIPayrollModel.Philhealth" />
+          <EntitySet Name="Payrolls" EntityType="DMSIPayrollModel.Payroll" />
+          <EntitySet Name="PYTables" EntityType="DMSIPayrollModel.PYTable" />
+          <AssociationSet Name="FK_Payroll_PYTable" Association="DMSIPayrollModel.FK_Payroll_PYTable">
+            <End Role="PYTable" EntitySet="PYTables" />
+            <End Role="Payroll" EntitySet="Payrolls" />
+          </AssociationSet>
+          <EntitySet Name="PayrollDetails_Deduction" EntityType="DMSIPayrollModel.PayrollDetails_Deduction" />
+          <EntitySet Name="PayrollDetails_Loan" EntityType="DMSIPayrollModel.PayrollDetails_Loan" />
+          <AssociationSet Name="FK_PayrollDetails_Deduction_Deduction" Association="DMSIPayrollModel.FK_PayrollDetails_Deduction_Deduction">
+            <End Role="Deduction" EntitySet="Deductions" />
+            <End Role="PayrollDetails_Deduction" EntitySet="PayrollDetails_Deduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayrollDetails_Loan_Loan" Association="DMSIPayrollModel.FK_PayrollDetails_Loan_Loan">
+            <End Role="Loan" EntitySet="Loans" />
+            <End Role="PayrollDetails_Loan" EntitySet="PayrollDetails_Loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayrollDetails_Deduction_Payroll" Association="DMSIPayrollModel.FK_PayrollDetails_Deduction_Payroll">
+            <End Role="Payroll" EntitySet="Payrolls" />
+            <End Role="PayrollDetails_Deduction" EntitySet="PayrollDetails_Deduction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PayrollDetails_Loan_Payroll" Association="DMSIPayrollModel.FK_PayrollDetails_Loan_Payroll">
+            <End Role="Payroll" EntitySet="Payrolls" />
+            <End Role="PayrollDetails_Loan" EntitySet="PayrollDetails_Loan" />
+          </AssociationSet>
+          <EntitySet Name="BiometricsLogs" EntityType="DMSIPayrollModel.BiometricsLog" />
+          <EntitySet Name="Tardies" EntityType="DMSIPayrollModel.Tardy" />
+          <AssociationSet Name="FK_Tardy_Payroll" Association="DMSIPayrollModel.FK_Tardy_Payroll">
+            <End Role="Payroll" EntitySet="Payrolls" />
+            <End Role="Tardy" EntitySet="Tardies" />
+          </AssociationSet>
+          <EntitySet Name="OvertimeTypes" EntityType="DMSIPayrollModel.OvertimeType" />
+          <EntitySet Name="Overtimes" EntityType="DMSIPayrollModel.Overtime" />
+          <EntitySet Name="NightDifferentials" EntityType="DMSIPayrollModel.NightDifferential" />
+          <EntitySet Name="NightShiftTypes" EntityType="DMSIPayrollModel.NightShiftType" />
+          <EntitySet Name="Adjustments" EntityType="DMSIPayrollModel.Adjustment" />
+          <EntitySet Name="Holidays" EntityType="DMSIPayrollModel.Holiday" />
+          <AssociationSet Name="FK_Holidays_HolidayType" Association="DMSIPayrollModel.FK_Holidays_HolidayType">
+            <End Role="HolidayType" EntitySet="HolidayTypes" />
+            <End Role="Holiday" EntitySet="Holidays" />
+          </AssociationSet>
+          <FunctionImport Name="GetEmployeeDTR" ReturnType="Collection(DMSIPayrollModel.GetEmployeeDTR_Result)">
+            <Parameter Name="startDate" Mode="In" Type="String" />
+            <Parameter Name="endDate" Mode="In" Type="String" />
+            <Parameter Name="bioid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Employees" EntityType="DMSIPayrollModel.Employee" />
+          <AssociationSet Name="FK_Employee_Company" Association="DMSIPayrollModel.FK_Employee_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Deduction_Employee" Association="DMSIPayrollModel.FK_Deduction_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Deduction" EntitySet="Deductions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmployeePosition" Association="DMSIPayrollModel.FK_Employee_EmployeePosition">
+            <End Role="EmployeePosition" EntitySet="EmployeePositions" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Holidays_Employee" Association="DMSIPayrollModel.FK_Holidays_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Holiday" EntitySet="Holidays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Loan_Employee" Association="DMSIPayrollModel.FK_Loan_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Loan" EntitySet="Loans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payroll_Employee" Association="DMSIPayrollModel.FK_Payroll_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Payroll" EntitySet="Payrolls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tardy_Employee" Association="DMSIPayrollModel.FK_Tardy_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Tardy" EntitySet="Tardies" />
+          </AssociationSet>
+          <EntitySet Name="Incomes" EntityType="DMSIPayrollModel.Income" />
+          <AssociationSet Name="FK_Income_Employee" Association="DMSIPayrollModel.FK_Income_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Income" EntitySet="Incomes" />
+          </AssociationSet>
+          <EntitySet Name="OtherIncomes" EntityType="DMSIPayrollModel.OtherIncome" />
+          <AssociationSet Name="FK_OtherIncome_Employee" Association="DMSIPayrollModel.FK_OtherIncome_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="OtherIncome" EntitySet="OtherIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherIncome_IncomeType" Association="DMSIPayrollModel.FK_OtherIncome_IncomeType">
+            <End Role="IncomeType" EntitySet="IncomeTypes" />
+            <End Role="OtherIncome" EntitySet="OtherIncomes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OtherIncome_Period" Association="DMSIPayrollModel.FK_OtherIncome_Period">
+            <End Role="Period" EntitySet="Periods" />
+            <End Role="OtherIncome" EntitySet="OtherIncomes" />
+          </AssociationSet>
+          <EntitySet Name="Leaves" EntityType="DMSIPayrollModel.Leave" />
+          <AssociationSet Name="FK_Leave_Employee" Association="DMSIPayrollModel.FK_Leave_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Leave_Payroll" Association="DMSIPayrollModel.FK_Leave_Payroll">
+            <End Role="Payroll" EntitySet="Payrolls" />
+            <End Role="Leave" EntitySet="Leaves" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="DMSIPayrollModel.FK_Employee_Company" FromRole="Company" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="EmployeePositionID" />
+          </Key>
+          <Property Name="EmployeePositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DailyRate" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Employees" Relationship="DMSIPayrollModel.FK_Employee_EmployeePosition" FromRole="EmployeePosition" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="IncomeType">
+          <Key>
+            <PropertyRef Name="IncomeTypeID" />
+          </Key>
+          <Property Name="IncomeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IncomeTypeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OtherIncomes" Relationship="DMSIPayrollModel.FK_OtherIncome_IncomeType" FromRole="IncomeType" ToRole="OtherIncome" />
+        </EntityType>
+        <EntityType Name="Loan">
+          <Key>
+            <PropertyRef Name="LoanID" />
+          </Key>
+          <Property Name="LoanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="LoanTypeID" Type="Int32" Nullable="false" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PeriodID" Type="Int32" Nullable="false" />
+          <Property Name="PrincipalAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TotalLoanAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TotalPayment" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Amortization" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="LoanBalance" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="LoanType" Relationship="DMSIPayrollModel.FK_Loan_LoanType" FromRole="Loan" ToRole="LoanType" />
+          <NavigationProperty Name="Period" Relationship="DMSIPayrollModel.FK_Loan_Period" FromRole="Loan" ToRole="Period" />
+          <NavigationProperty Name="PayrollDetails_Loan" Relationship="DMSIPayrollModel.FK_PayrollDetails_Loan_Loan" FromRole="Loan" ToRole="PayrollDetails_Loan" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_Loan_Employee" FromRole="Loan" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="LoanType">
+          <Key>
+            <PropertyRef Name="LoanTypeID" />
+          </Key>
+          <Property Name="LoanTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoanTypeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Loans" Relationship="DMSIPayrollModel.FK_Loan_LoanType" FromRole="LoanType" ToRole="Loan" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="PeriodID" />
+          </Key>
+          <Property Name="PeriodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PeriodCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PeriodDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Loans" Relationship="DMSIPayrollModel.FK_Loan_Period" FromRole="Period" ToRole="Loan" />
+          <NavigationProperty Name="Deductions" Relationship="DMSIPayrollModel.FK_Deduction_Period" FromRole="Period" ToRole="Deduction" />
+          <NavigationProperty Name="OtherIncomes" Relationship="DMSIPayrollModel.FK_OtherIncome_Period" FromRole="Period" ToRole="OtherIncome" />
+        </EntityType>
+        <Association Name="FK_Loan_LoanType">
+          <End Type="DMSIPayrollModel.LoanType" Role="LoanType" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Loan" Role="Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoanType">
+              <PropertyRef Name="LoanTypeID" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="LoanTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loan_Period">
+          <End Type="DMSIPayrollModel.Period" Role="Period" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Loan" Role="Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoanType_LoanType">
+          <End Type="DMSIPayrollModel.LoanType" Role="LoanType" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.LoanType" Role="LoanType1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="LoanType">
+              <PropertyRef Name="LoanTypeID" />
+            </Principal>
+            <Dependent Role="LoanType1">
+              <PropertyRef Name="LoanTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HolidayType">
+          <Key>
+            <PropertyRef Name="HolidayTypeID" />
+          </Key>
+          <Property Name="HolidayTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HolidayCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Multiplier" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <NavigationProperty Name="Holidays" Relationship="DMSIPayrollModel.FK_Holidays_HolidayType" FromRole="HolidayType" ToRole="Holiday" />
+        </EntityType>
+        <EntityType Name="DeductionType">
+          <Key>
+            <PropertyRef Name="DeductionTypeID" />
+          </Key>
+          <Property Name="DeductionTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeductionCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Deductions" Relationship="DMSIPayrollModel.FK_Deduction_DeductionType" FromRole="DeductionType" ToRole="Deduction" />
+        </EntityType>
+        <EntityType Name="Deduction">
+          <Key>
+            <PropertyRef Name="DeductionID" />
+          </Key>
+          <Property Name="DeductionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="PeriodID" Type="Int32" Nullable="false" />
+          <Property Name="DeductionTypeID" Type="Int32" Nullable="false" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amortization" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="DeductionType" Relationship="DMSIPayrollModel.FK_Deduction_DeductionType" FromRole="Deduction" ToRole="DeductionType" />
+          <NavigationProperty Name="Period" Relationship="DMSIPayrollModel.FK_Deduction_Period" FromRole="Deduction" ToRole="Period" />
+          <NavigationProperty Name="PayrollDetails_Deduction" Relationship="DMSIPayrollModel.FK_PayrollDetails_Deduction_Deduction" FromRole="Deduction" ToRole="PayrollDetails_Deduction" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_Deduction_Employee" FromRole="Deduction" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Deduction_DeductionType">
+          <End Type="DMSIPayrollModel.DeductionType" Role="DeductionType" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Deduction" Role="Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeductionType">
+              <PropertyRef Name="DeductionTypeID" />
+            </Principal>
+            <Dependent Role="Deduction">
+              <PropertyRef Name="DeductionTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deduction_Period">
+          <End Type="DMSIPayrollModel.Period" Role="Period" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Deduction" Role="Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="Deduction">
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PYSSS">
+          <Key>
+            <PropertyRef Name="PYSSSID" />
+          </Key>
+          <Property Name="PYSSSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaxSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Er" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Ec" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Ee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Philhealth">
+          <Key>
+            <PropertyRef Name="PHID" />
+          </Key>
+          <Property Name="PHID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaxSalary" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Ee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Er" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Payroll">
+          <Key>
+            <PropertyRef Name="PayrollID" />
+          </Key>
+          <Property Name="PayrollID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PYTableID" Type="Int32" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="BasicPay" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Holiday" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Adjustment" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Gross" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Premium" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Deduction" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Loan" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Net" Type="Decimal" Precision="19" Scale="4" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="PYTable" Relationship="DMSIPayrollModel.FK_Payroll_PYTable" FromRole="Payroll" ToRole="PYTable" />
+          <NavigationProperty Name="PayrollDetails_Deduction" Relationship="DMSIPayrollModel.FK_PayrollDetails_Deduction_Payroll" FromRole="Payroll" ToRole="PayrollDetails_Deduction" />
+          <NavigationProperty Name="PayrollDetails_Loan" Relationship="DMSIPayrollModel.FK_PayrollDetails_Loan_Payroll" FromRole="Payroll" ToRole="PayrollDetails_Loan" />
+          <NavigationProperty Name="Tardies" Relationship="DMSIPayrollModel.FK_Tardy_Payroll" FromRole="Payroll" ToRole="Tardy" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_Payroll_Employee" FromRole="Payroll" ToRole="Employee" />
+          <NavigationProperty Name="Leaves" Relationship="DMSIPayrollModel.FK_Leave_Payroll" FromRole="Payroll" ToRole="Leave" />
+        </EntityType>
+        <EntityType Name="PYTable">
+          <Key>
+            <PropertyRef Name="PYTableID" />
+          </Key>
+          <Property Name="PYTableID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PYCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PYDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Payrolls" Relationship="DMSIPayrollModel.FK_Payroll_PYTable" FromRole="PYTable" ToRole="Payroll" />
+        </EntityType>
+        <Association Name="FK_Payroll_PYTable">
+          <End Type="DMSIPayrollModel.PYTable" Role="PYTable" Multiplicity="0..1" />
+          <End Type="DMSIPayrollModel.Payroll" Role="Payroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PYTable">
+              <PropertyRef Name="PYTableID" />
+            </Principal>
+            <Dependent Role="Payroll">
+              <PropertyRef Name="PYTableID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PayrollDetails_Deduction">
+          <Key>
+            <PropertyRef Name="PayrollDetails_DeductionID" />
+          </Key>
+          <Property Name="PayrollDetails_DeductionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PayrollID" Type="Int32" Nullable="false" />
+          <Property Name="DeductionID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Deduction" Relationship="DMSIPayrollModel.FK_PayrollDetails_Deduction_Deduction" FromRole="PayrollDetails_Deduction" ToRole="Deduction" />
+          <NavigationProperty Name="Payroll" Relationship="DMSIPayrollModel.FK_PayrollDetails_Deduction_Payroll" FromRole="PayrollDetails_Deduction" ToRole="Payroll" />
+        </EntityType>
+        <EntityType Name="PayrollDetails_Loan">
+          <Key>
+            <PropertyRef Name="PayrollDetails_LoanID" />
+          </Key>
+          <Property Name="PayrollDetails_LoanID" Type="Int32" Nullable="false" />
+          <Property Name="PayrollID" Type="Int32" Nullable="false" />
+          <Property Name="LoanID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Loan" Relationship="DMSIPayrollModel.FK_PayrollDetails_Loan_Loan" FromRole="PayrollDetails_Loan" ToRole="Loan" />
+          <NavigationProperty Name="Payroll" Relationship="DMSIPayrollModel.FK_PayrollDetails_Loan_Payroll" FromRole="PayrollDetails_Loan" ToRole="Payroll" />
+        </EntityType>
+        <Association Name="FK_PayrollDetails_Deduction_Deduction">
+          <End Type="DMSIPayrollModel.Deduction" Role="Deduction" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.PayrollDetails_Deduction" Role="PayrollDetails_Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deduction">
+              <PropertyRef Name="DeductionID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Deduction">
+              <PropertyRef Name="DeductionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayrollDetails_Loan_Loan">
+          <End Type="DMSIPayrollModel.Loan" Role="Loan" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.PayrollDetails_Loan" Role="PayrollDetails_Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loan">
+              <PropertyRef Name="LoanID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Loan">
+              <PropertyRef Name="LoanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayrollDetails_Deduction_Payroll">
+          <End Type="DMSIPayrollModel.Payroll" Role="Payroll" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.PayrollDetails_Deduction" Role="PayrollDetails_Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Deduction">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PayrollDetails_Loan_Payroll">
+          <End Type="DMSIPayrollModel.Payroll" Role="Payroll" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.PayrollDetails_Loan" Role="PayrollDetails_Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="PayrollDetails_Loan">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BiometricsLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BiometricsID" Type="Int32" Nullable="false" />
+          <Property Name="DTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Mode" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tardy">
+          <Key>
+            <PropertyRef Name="TardyID" />
+          </Key>
+          <Property Name="TardyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="PayrollDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Value" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PayrollID" Type="Int32" />
+          <NavigationProperty Name="Payroll" Relationship="DMSIPayrollModel.FK_Tardy_Payroll" FromRole="Tardy" ToRole="Payroll" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_Tardy_Employee" FromRole="Tardy" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Tardy_Payroll">
+          <End Type="DMSIPayrollModel.Payroll" Role="Payroll" Multiplicity="0..1" />
+          <End Type="DMSIPayrollModel.Tardy" Role="Tardy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="Tardy">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OvertimeType">
+          <Key>
+            <PropertyRef Name="OvertimeTypeID" />
+          </Key>
+          <Property Name="OvertimeTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OvertimeTypeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Multiplier" Type="Decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Overtime">
+          <Key>
+            <PropertyRef Name="OvertimeID" />
+          </Key>
+          <Property Name="OvertimeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeID" Type="Int32" Nullable="false" />
+          <Property Name="OvertimeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PayrollDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Value" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PayrollID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NightDifferential">
+          <Key>
+            <PropertyRef Name="NightDifferentialID" />
+          </Key>
+          <Property Name="NightDifferentialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="NightShiftTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PayrollDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Value" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PayrollID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="NightShiftType">
+          <Key>
+            <PropertyRef Name="NightShiftTypeID" />
+          </Key>
+          <Property Name="NightShiftTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NightShiftTypeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Multiplier" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Adjustment">
+          <Key>
+            <PropertyRef Name="AdjustmentID" />
+          </Key>
+          <Property Name="AdjustmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="PayrollDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PayrollID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Holiday">
+          <Key>
+            <PropertyRef Name="HolidayID" />
+          </Key>
+          <Property Name="HolidayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="HolidayTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PayrollDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NoOfDays" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PayrollID" Type="Int32" />
+          <NavigationProperty Name="HolidayType" Relationship="DMSIPayrollModel.FK_Holidays_HolidayType" FromRole="Holiday" ToRole="HolidayType" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_Holidays_Employee" FromRole="Holiday" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Holidays_HolidayType">
+          <End Type="DMSIPayrollModel.HolidayType" Role="HolidayType" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Holiday" Role="Holiday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HolidayType">
+              <PropertyRef Name="HolidayTypeID" />
+            </Principal>
+            <Dependent Role="Holiday">
+              <PropertyRef Name="HolidayTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetEmployeeDTR_Result">
+          <Property Type="DateTime" Name="DATE" Nullable="true" />
+          <Property Type="String" Name="DAY" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="EmployeeNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="153" />
+          <Property Type="Int32" Name="bioid" Nullable="true" />
+          <Property Type="String" Name="TIMEIN" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="TIMEOUT" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Position" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Company" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeePositionID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="Birthdate" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateHired" Type="DateTime" Precision="0" />
+          <Property Name="DateResigned" Type="DateTime" Precision="0" />
+          <Property Name="BiometricsID" Type="Int32" />
+          <NavigationProperty Name="Company" Relationship="DMSIPayrollModel.FK_Employee_Company" FromRole="Employee" ToRole="Company" />
+          <NavigationProperty Name="Deductions" Relationship="DMSIPayrollModel.FK_Deduction_Employee" FromRole="Employee" ToRole="Deduction" />
+          <NavigationProperty Name="EmployeePosition" Relationship="DMSIPayrollModel.FK_Employee_EmployeePosition" FromRole="Employee" ToRole="EmployeePosition" />
+          <NavigationProperty Name="Holidays" Relationship="DMSIPayrollModel.FK_Holidays_Employee" FromRole="Employee" ToRole="Holiday" />
+          <NavigationProperty Name="Loans" Relationship="DMSIPayrollModel.FK_Loan_Employee" FromRole="Employee" ToRole="Loan" />
+          <NavigationProperty Name="Payrolls" Relationship="DMSIPayrollModel.FK_Payroll_Employee" FromRole="Employee" ToRole="Payroll" />
+          <NavigationProperty Name="Tardies" Relationship="DMSIPayrollModel.FK_Tardy_Employee" FromRole="Employee" ToRole="Tardy" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="PayrollType" Type="Int32" />
+          <NavigationProperty Name="Incomes" Relationship="DMSIPayrollModel.FK_Income_Employee" FromRole="Employee" ToRole="Income" />
+          <NavigationProperty Name="OtherIncomes" Relationship="DMSIPayrollModel.FK_OtherIncome_Employee" FromRole="Employee" ToRole="OtherIncome" />
+          <NavigationProperty Name="Leaves" Relationship="DMSIPayrollModel.FK_Leave_Employee" FromRole="Employee" ToRole="Leave" />
+        </EntityType>
+        <Association Name="FK_Employee_Company">
+          <End Type="DMSIPayrollModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Deduction_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Deduction" Role="Deduction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Deduction">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmployeePosition">
+          <End Type="DMSIPayrollModel.EmployeePosition" Role="EmployeePosition" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="EmployeePositionID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeePositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Holidays_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Holiday" Role="Holiday" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Holiday">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Loan_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Loan" Role="Loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Loan">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payroll_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Payroll" Role="Payroll" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Payroll">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tardy_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Tardy" Role="Tardy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Tardy">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="IncomeID" />
+          </Key>
+          <Property Name="IncomeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="PayrollDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="NoOfDays" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PayrollID" Type="Int32" />
+          <Property Name="Trip" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_Income_Employee" FromRole="Income" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Income_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Income" Role="Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OtherIncome">
+          <Key>
+            <PropertyRef Name="OtherIncomeID" />
+          </Key>
+          <Property Name="OtherIncomeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="IncomeTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PeriodID" Type="Int32" Nullable="false" />
+          <Property Name="StDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_OtherIncome_Employee" FromRole="OtherIncome" ToRole="Employee" />
+          <NavigationProperty Name="IncomeType" Relationship="DMSIPayrollModel.FK_OtherIncome_IncomeType" FromRole="OtherIncome" ToRole="IncomeType" />
+          <NavigationProperty Name="Period" Relationship="DMSIPayrollModel.FK_OtherIncome_Period" FromRole="OtherIncome" ToRole="Period" />
+        </EntityType>
+        <Association Name="FK_OtherIncome_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.OtherIncome" Role="OtherIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="OtherIncome">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherIncome_IncomeType">
+          <End Type="DMSIPayrollModel.IncomeType" Role="IncomeType" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.OtherIncome" Role="OtherIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IncomeType">
+              <PropertyRef Name="IncomeTypeID" />
+            </Principal>
+            <Dependent Role="OtherIncome">
+              <PropertyRef Name="IncomeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OtherIncome_Period">
+          <End Type="DMSIPayrollModel.Period" Role="Period" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.OtherIncome" Role="OtherIncome" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="OtherIncome">
+              <PropertyRef Name="PeriodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PayrollDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PayrollID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="DMSIPayrollModel.FK_Leave_Employee" FromRole="Leave" ToRole="Employee" />
+          <NavigationProperty Name="Payroll" Relationship="DMSIPayrollModel.FK_Leave_Payroll" FromRole="Leave" ToRole="Payroll" />
+          <Property Name="Value" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Leave_Employee">
+          <End Type="DMSIPayrollModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="DMSIPayrollModel.Leave" Role="Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Leave_Payroll">
+          <End Type="DMSIPayrollModel.Payroll" Role="Payroll" Multiplicity="0..1" />
+          <End Type="DMSIPayrollModel.Leave" Role="Leave" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payroll">
+              <PropertyRef Name="PayrollID" />
+            </Principal>
+            <Dependent Role="Leave">
+              <PropertyRef Name="PayrollID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DMSIPayrollModelStoreContainer" CdmEntityContainer="DMSIPayrollEntities">
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePositions">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.EmployeePosition">
+              <MappingFragment StoreEntitySet="EmployeePosition">
+                <ScalarProperty Name="DailyRate" ColumnName="DailyRate" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="EmployeePositionID" ColumnName="EmployeePositionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IncomeTypes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.IncomeType">
+              <MappingFragment StoreEntitySet="IncomeType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IncomeTypeCode" ColumnName="IncomeTypeCode" />
+                <ScalarProperty Name="IncomeTypeID" ColumnName="IncomeTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loans">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Loan">
+              <MappingFragment StoreEntitySet="Loan">
+                <ScalarProperty Name="LoanBalance" ColumnName="LoanBalance" />
+                <ScalarProperty Name="Amortization" ColumnName="Amortization" />
+                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
+                <ScalarProperty Name="TotalLoanAmount" ColumnName="TotalLoanAmount" />
+                <ScalarProperty Name="PrincipalAmount" ColumnName="PrincipalAmount" />
+                <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="LoanTypeID" ColumnName="LoanTypeID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LoanID" ColumnName="LoanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoanTypes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.LoanType">
+              <MappingFragment StoreEntitySet="LoanType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LoanTypeCode" ColumnName="LoanTypeCode" />
+                <ScalarProperty Name="LoanTypeID" ColumnName="LoanTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periods">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Period">
+              <MappingFragment StoreEntitySet="Period">
+                <ScalarProperty Name="PeriodDescription" ColumnName="PeriodDescription" />
+                <ScalarProperty Name="PeriodCode" ColumnName="PeriodCode" />
+                <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HolidayTypes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.HolidayType">
+              <MappingFragment StoreEntitySet="HolidayType">
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="HolidayCode" ColumnName="HolidayCode" />
+                <ScalarProperty Name="HolidayTypeID" ColumnName="HolidayTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeductionTypes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.DeductionType">
+              <MappingFragment StoreEntitySet="DeductionType">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DeductionCode" ColumnName="DeductionCode" />
+                <ScalarProperty Name="DeductionTypeID" ColumnName="DeductionTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deductions">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Deduction">
+              <MappingFragment StoreEntitySet="Deduction">
+                <ScalarProperty Name="Amortization" ColumnName="Amortization" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="DeductionTypeID" ColumnName="DeductionTypeID" />
+                <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DeductionID" ColumnName="DeductionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PYSSSes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.PYSSS">
+              <MappingFragment StoreEntitySet="PYSSS">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Ee" ColumnName="Ee" />
+                <ScalarProperty Name="Ec" ColumnName="Ec" />
+                <ScalarProperty Name="Er" ColumnName="Er" />
+                <ScalarProperty Name="MaxSalary" ColumnName="MaxSalary" />
+                <ScalarProperty Name="MinSalary" ColumnName="MinSalary" />
+                <ScalarProperty Name="PYSSSID" ColumnName="PYSSSID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Philhealths">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Philhealth">
+              <MappingFragment StoreEntitySet="Philhealth">
+                <ScalarProperty Name="Er" ColumnName="Er" />
+                <ScalarProperty Name="Ee" ColumnName="Ee" />
+                <ScalarProperty Name="MaxSalary" ColumnName="MaxSalary" />
+                <ScalarProperty Name="MinSalary" ColumnName="MinSalary" />
+                <ScalarProperty Name="PHID" ColumnName="PHID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payrolls">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Payroll">
+              <MappingFragment StoreEntitySet="Payroll">
+                <ScalarProperty Name="Net" ColumnName="Net" />
+                <ScalarProperty Name="Loan" ColumnName="Loan" />
+                <ScalarProperty Name="Deduction" ColumnName="Deduction" />
+                <ScalarProperty Name="Premium" ColumnName="Premium" />
+                <ScalarProperty Name="Gross" ColumnName="Gross" />
+                <ScalarProperty Name="Adjustment" ColumnName="Adjustment" />
+                <ScalarProperty Name="Holiday" ColumnName="Holiday" />
+                <ScalarProperty Name="BasicPay" ColumnName="BasicPay" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="PYTableID" ColumnName="PYTableID" />
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PYTables">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.PYTable">
+              <MappingFragment StoreEntitySet="PYTable">
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PYDate" ColumnName="PYDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="PYCode" ColumnName="PYCode" />
+                <ScalarProperty Name="PYTableID" ColumnName="PYTableID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollDetails_Deduction">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.PayrollDetails_Deduction">
+              <MappingFragment StoreEntitySet="PayrollDetails_Deduction">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DeductionID" ColumnName="DeductionID" />
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="PayrollDetails_DeductionID" ColumnName="PayrollDetails_DeductionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PayrollDetails_Loan">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.PayrollDetails_Loan">
+              <MappingFragment StoreEntitySet="PayrollDetails_Loan">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LoanID" ColumnName="LoanID" />
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="PayrollDetails_LoanID" ColumnName="PayrollDetails_LoanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BiometricsLogs">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.BiometricsLog">
+              <MappingFragment StoreEntitySet="BiometricsLog">
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="DTime" ColumnName="DTime" />
+                <ScalarProperty Name="BiometricsID" ColumnName="BiometricsID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tardies">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Tardy">
+              <MappingFragment StoreEntitySet="Tardy">
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PayrollDate" ColumnName="PayrollDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="TardyID" ColumnName="TardyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OvertimeTypes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.OvertimeType">
+              <MappingFragment StoreEntitySet="OvertimeType">
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OvertimeTypeCode" ColumnName="OvertimeTypeCode" />
+                <ScalarProperty Name="OvertimeTypeID" ColumnName="OvertimeTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Overtimes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Overtime">
+              <MappingFragment StoreEntitySet="Overtime">
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PayrollDate" ColumnName="PayrollDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="OvertimeTypeID" ColumnName="OvertimeTypeID" />
+                <ScalarProperty Name="EmployeID" ColumnName="EmployeID" />
+                <ScalarProperty Name="OvertimeID" ColumnName="OvertimeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NightDifferentials">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.NightDifferential">
+              <MappingFragment StoreEntitySet="NightDifferential">
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="PayrollDate" ColumnName="PayrollDate" />
+                <ScalarProperty Name="NightShiftTypeID" ColumnName="NightShiftTypeID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="NightDifferentialID" ColumnName="NightDifferentialID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NightShiftTypes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.NightShiftType">
+              <MappingFragment StoreEntitySet="NightShiftType">
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="NightShiftTypeCode" ColumnName="NightShiftTypeCode" />
+                <ScalarProperty Name="NightShiftTypeID" ColumnName="NightShiftTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Adjustments">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Adjustment">
+              <MappingFragment StoreEntitySet="Adjustment">
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PayrollDate" ColumnName="PayrollDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="AdjustmentID" ColumnName="AdjustmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Holidays">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Holiday">
+              <MappingFragment StoreEntitySet="Holidays">
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+                <ScalarProperty Name="PayrollDate" ColumnName="PayrollDate" />
+                <ScalarProperty Name="HolidayTypeID" ColumnName="HolidayTypeID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="HolidayID" ColumnName="HolidayID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetEmployeeDTR" FunctionName="DMSIPayrollModel.Store.GetEmployeeDTR">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DMSIPayrollModel.GetEmployeeDTR_Result">
+                <ScalarProperty Name="DATE" ColumnName="DATE" />
+                <ScalarProperty Name="DAY" ColumnName="DAY" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="bioid" ColumnName="bioid" />
+                <ScalarProperty Name="TIMEIN" ColumnName="TIMEIN" />
+                <ScalarProperty Name="TIMEOUT" ColumnName="TIMEOUT" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="PayrollType" ColumnName="PayrollType" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BiometricsID" ColumnName="BiometricsID" />
+                <ScalarProperty Name="DateResigned" ColumnName="DateResigned" />
+                <ScalarProperty Name="DateHired" ColumnName="DateHired" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="EmployeePositionID" ColumnName="EmployeePositionID" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmployeeNumber" ColumnName="EmployeeNumber" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incomes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Income">
+              <MappingFragment StoreEntitySet="Income">
+                <ScalarProperty Name="Trip" ColumnName="Trip" />
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PayrollDate" ColumnName="PayrollDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="IncomeID" ColumnName="IncomeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtherIncomes">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.OtherIncome">
+              <MappingFragment StoreEntitySet="OtherIncome">
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="StDate" ColumnName="StDate" />
+                <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IncomeTypeID" ColumnName="IncomeTypeID" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="OtherIncomeID" ColumnName="OtherIncomeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leaves">
+            <EntityTypeMapping TypeName="DMSIPayrollModel.Leave">
+              <MappingFragment StoreEntitySet="Leave">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PayrollID" ColumnName="PayrollID" />
+                <ScalarProperty Name="PayrollDate" ColumnName="PayrollDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

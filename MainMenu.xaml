@@ -1,0 +1,350 @@
+﻿<Controls:MetroWindow x:Class="DMSIPayroll.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:simpleChildWindow="clr-namespace:MahApps.Metro.SimpleChildWindow;assembly=MahApps.Metro.SimpleChildWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"            
+        Title="8 DIMESIONE MANPOWER SERVICES INC." WindowTitleBrush="#FF707070" Background="White" Loaded="MetroWindow_Loaded"  FontFamily="Arial"     MinWidth="650" MinHeight="500" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="Resources/ImageS/logo.png">
+    <Controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Grid>
+                <Rectangle Width="15" Height="15" Fill="White">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_cog}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Grid>
+        </DataTemplate>
+    </Controls:MetroWindow.IconTemplate>
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Rectangle Width="20"
+                   Height="20"
+                   Fill="White">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_user}" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <TextBlock VerticalAlignment="Center" Foreground="White" Name="empname"/>
+
+
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Window.Resources>
+        <Style x:Key="LargeTileStyle" TargetType="Controls:Tile">
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Height" Value="125" />
+            <Setter Property="TitleFontSize" Value="10" />
+            <Setter Property="Background" Value="#FF002753"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style x:Key="SmallTileStyle" TargetType="Controls:Tile">
+            <Setter Property="Width" Value="125" />
+            <Setter Property="Height" Value="125" />
+            <Setter Property="TitleFontSize" Value="10" />
+            <Setter Property="Background" Value="#FF002753"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <DataTemplate x:Key="MenuItemTemplate" DataType="{x:Type Controls:HamburgerMenuGlyphItem}">
+            <Grid Height="48">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                    FontSize="16"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontFamily="Segoe MDL2 Assets"
+                    Foreground="White"
+                    Text="{Binding Glyph}" />
+                <TextBlock Grid.Column="1"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    Foreground="White"
+                    Text="{Binding Label}" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <simpleChildWindow:ChildWindow
+                 Name="CWChangePass" GlowBrush="Black"
+                 TitleBarBackground="#FF001834"
+                 TitleForeground="White"
+                 IsOpen="False" 
+                 HorizontalContentAlignment="Stretch"
+                 VerticalContentAlignment="Stretch"
+                 Padding="15"
+                 CloseOnOverlay ="True"
+                 ShowCloseButton="True"
+                 ChildWindowWidth ="350"
+                 ChildWindowHeight="250"
+                 Title="Change Pass - Change your password.">
+            <simpleChildWindow:ChildWindow.Icon>
+                <Rectangle Width="22"
+				   Height="22"
+				   Fill="{DynamicResource IdealForegroundColorBrush}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Uniform"
+							 Visual="{DynamicResource appbar_cogs}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </simpleChildWindow:ChildWindow.Icon>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+
+
+            </Grid>
+        </simpleChildWindow:ChildWindow>
+
+        <DockPanel LastChildFill="True">
+            <DockPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF707070" Offset="0"/>
+                    <GradientStop Color="#FFA2A2A2" Offset="1"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+
+            <Grid DockPanel.Dock="Top" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="520"></ColumnDefinition>
+                    <ColumnDefinition Width="80"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.ColumnSpan="4" >
+
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FF001834" Offset="1"/>
+                            <GradientStop Color="#FF001834"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image Margin="2" Source="Resources/ImageS/logo.png">
+                </Image>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label  Margin="-179,10,-55,10" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  FontFamily="Cloister Black" FontSize="20" Foreground="White" Padding="0,5,5,0" HorizontalAlignment="Left" Width="754" Grid.RowSpan="2">
+                        <Label.Effect>
+                            <DropShadowEffect BlurRadius="10"/>
+                        </Label.Effect>
+                        8 DIMESIONE MANPOWER SERVICES INC.
+                    </Label>
+                    <Label Margin="10,55,0,5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial" FontSize="14" Foreground="White" Padding="0,0,5,5" HorizontalAlignment="Left" Content="PAYROLL SYSTEM" Grid.RowSpan="2"/>
+
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" VerticalContentAlignment="Bottom" Margin="0" HorizontalAlignment="Right" Grid.Column="3" Foreground="White" FontFamily="Arial" FontSize="18" FontWeight="Bold" Padding="5,0" Name="time"/>
+                    <Label Grid.Row="1" VerticalContentAlignment="Bottom" Margin="0" HorizontalAlignment="Right" Grid.Column="3" Foreground="White" FontFamily="Arial" FontSize="18" FontWeight="Bold" Padding="5,0,5,5" Name="thedate"></Label>
+                </Grid>
+
+
+
+            </Grid>
+
+
+
+            <StatusBar DockPanel.Dock="Bottom" Background="#FF001834" FontFamily="Roboto"  >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="*" ></ColumnDefinition>
+                        <ColumnDefinition Width="70"></ColumnDefinition>
+                        <ColumnDefinition Width="70"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StatusBarItem x:Name="Status2" Grid.Row="0" Grid.Column="0" Content="" HorizontalAlignment="Left" />
+                    <StatusBarItem x:Name="Status4" Margin="1000,0,1000,0" Grid.Row="0" Grid.Column="1" Content=" " HorizontalAlignment="Left" />
+                    <StatusBarItem x:Name="Status1" Grid.Row="0" Grid.Column="1" Content=" "  Margin="0,0,10,0" HorizontalAlignment="Right" />
+
+                    <StatusBarItem x:Name="Status3" Grid.Row="0" Grid.Column="4" Content=" " HorizontalAlignment="Left" />
+                </Grid>
+            </StatusBar>
+
+            <Grid DockPanel.Dock="Top" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!--<Image Grid.ColumnSpan="7" Source="Image/CMIS.png"  Opacity="0.2" Margin="-210,-40,-423,0" Grid.RowSpan="3"/>-->
+
+                <WrapPanel Grid.Row="1" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="7">
+
+                    <Controls:Tile TitleFontSize="12" Title="EMPLOYEES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnEmployees" Click="btnEmployees_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_people}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="COMPANIES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnCompany" Click="btnCompany_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_places}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="POSITIONS"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnPositions" Click="btnPositions_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_suitcase}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="LOAN TYPES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnLoanTypes" Click="btnLoanTypes_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_home_garage}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="INCOME TYPES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnIncomeTypes" Click="btnIncomeTypes_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_money}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="DEDUCTION TYPES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnDeductionType" Click="btnDeductionType_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_grade_d_minus}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="OVERTIME TYPES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnOvertimeType" Click="btnOvertimeType_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_clock}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="PERIODS"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnPeriods" Click="btnPeriods_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_calendar_range}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="HOLIDAY TYPES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnHolidayTypes" Click="btnHolidayTypes_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_palmtree}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="NIGHT SHIFT TYPES"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnNightShiftTypes" Click="btnNightShiftTypes_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_moon}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+
+
+
+
+                </WrapPanel>
+
+
+                <WrapPanel Grid.Row="0" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="7">
+
+
+                    <Controls:Tile TitleFontSize="12" Title="PROCESS PAYROLL"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnProcessPayroll" Click="btnProcessPayroll_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_share}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+                    
+                    <Controls:Tile TitleFontSize="12" Title="EMPLOYEE MASTER FORM"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnPayrollDetails" Click="btnPayrollDetails_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_people_profile}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="ATTENDANCE"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnAttendance" Click="btnAttendance_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_people_checkbox}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+
+                    <Controls:Tile TitleFontSize="12" Title="ADD BULK INCOME"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnBulkIncome" Click="btnBulkIncome_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_add_multiple}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                    <Controls:Tile TitleFontSize="12" Title="EMPLOYEE DTR"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnEmployeeDTR" Click="btnEmployeeDTR_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_book_list}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
+                </WrapPanel>
+
+
+                <WrapPanel Grid.Row="2" Margin="10" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="7">
+
+
+                </WrapPanel>
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+
+
+</Controls:MetroWindow>
+

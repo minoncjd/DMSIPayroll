@@ -1,0 +1,50 @@
+﻿<Controls:MetroWindow  x:Class="DMSIPayroll.PayrollProcessMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" GlowBrush="Black"
+        Title="SELECT PAYROLL TYPE" WindowTitleBrush="#FF707070" Height="156.503" Width="300" ResizeMode="NoResize" ShowInTaskbar="True" WindowStartupLocation="CenterScreen" ShowMaxRestoreButton="False" ShowMinButton="False" Loaded="MetroWindow_Loaded">
+
+    <Controls:MetroWindow.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+    </Controls:MetroWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btnPayrollLogistics" TabIndex="2" Grid.Row="1" Margin="5" Click="btnPayrollLogistics_Click">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="20" Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Label Content="LOGISTICS" />
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="btnPayrollOtherDivision" TabIndex="2" Grid.Row="2" Margin="5" Click="btnPayrollOtherDivision_Click">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="20" Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Label Content="OTHER DIVISION" />
+            </StackPanel>
+        </Button>
+
+
+    </Grid>
+
+</Controls:MetroWindow>

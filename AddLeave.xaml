@@ -1,0 +1,49 @@
+﻿<Controls:MetroWindow  x:Class="DMSIPayroll.AddLeave"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" GlowBrush="Black"
+        Title="ADD LEAVE" WindowTitleBrush="#FF707070" Height="274.603" Width="363" ResizeMode="NoResize" ShowInTaskbar="True" WindowStartupLocation="CenterScreen" ShowMaxRestoreButton="False" ShowMinButton="False" Loaded="MetroWindow_Loaded">
+
+    <Controls:MetroWindow.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+    </Controls:MetroWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="button" TabIndex="2" Grid.Row="2" Click="button_Click">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="20" Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Label Content="SAVE" />
+            </StackPanel>
+        </Button>
+
+        <Grid Grid.Row="1">
+            <Label Content="Payroll Date" HorizontalAlignment="Left" Margin="27,153,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <DatePicker x:Name="dpDate" HorizontalAlignment="Left" Height="18" Margin="125,150,0,0" VerticalAlignment="Top" Width="193"/>
+            <Label Content="Employee" HorizontalAlignment="Left" Margin="26,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbEmployeeName" IsReadOnly="True" HorizontalAlignment="Left" Height="18" Margin="125,28,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="193"/>
+            <Label Content="Amount" HorizontalAlignment="Left" Margin="27,124,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbAmount" HorizontalAlignment="Left" Height="18" Margin="125,119,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="193"/>
+            <Label Content="Daily Rate" HorizontalAlignment="Left" Margin="27,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbDailyRate" IsReadOnly="True" HorizontalAlignment="Left" Height="18" Margin="125,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="193"/>
+            <Label Content="Value" HorizontalAlignment="Left" Margin="27,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbValue" HorizontalAlignment="Left" Height="18" Margin="125,89,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="193" LostFocus="tbValue_LostFocus"/>
+        </Grid>
+
+    </Grid>
+
+</Controls:MetroWindow>

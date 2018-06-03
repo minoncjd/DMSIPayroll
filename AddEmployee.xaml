@@ -1,0 +1,66 @@
+﻿<Controls:MetroWindow  x:Class="DMSIPayroll.AddEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" GlowBrush="Black"
+        Title="ADD EMPLOYEE" WindowTitleBrush="#FF707070" Height="558.575" Width="342" ResizeMode="NoResize" ShowInTaskbar="True" WindowStartupLocation="CenterScreen" ShowMaxRestoreButton="False" ShowMinButton="False" Loaded="MetroWindow_Loaded">
+
+    <Controls:MetroWindow.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+    </Controls:MetroWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Button x:Name="button" TabIndex="7" Grid.Row="2" Click="button_Click">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="20" Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_save}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Label Content="SAVE" />
+            </StackPanel>
+        </Button>
+        <Grid Grid.Row="1">
+            <TextBox x:Name="tbFirstName" TabIndex="1" HorizontalAlignment="Left" Height="21" Margin="104,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+            <Label Content="First Name" HorizontalAlignment="Left" Margin="32,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbMiddleName" TabIndex="2" HorizontalAlignment="Left" Height="21" Margin="104,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Middle Name" HorizontalAlignment="Left" Margin="32,86,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbLastName" TabIndex="3" HorizontalAlignment="Left" Height="21" Margin="104,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Last Name" HorizontalAlignment="Left" Margin="33,118,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <ComboBox x:Name="cbCompany" TabIndex="4" HorizontalAlignment="Left" Height="18" Margin="105,246,0,0" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Company" HorizontalAlignment="Left" Margin="34,251,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <ComboBox x:Name="cbPosition" TabIndex="5" HorizontalAlignment="Left" Height="18" Margin="105,277,0,0" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Position" HorizontalAlignment="Left" Margin="34,282,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <DatePicker x:Name="dpDateResigned" TabIndex="6" HorizontalAlignment="Left" Height="26" Margin="104,339,0,0" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Date Resigned" HorizontalAlignment="Left" Margin="32,344,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbEmployeeNumber" TabIndex="0" HorizontalAlignment="Left" Height="21" Margin="104,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Employee No" HorizontalAlignment="Left" Margin="32,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbBiometricsID" TabIndex="3" HorizontalAlignment="Left" Height="21" Margin="104,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Biometrics ID" HorizontalAlignment="Left" Margin="33,376,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <DatePicker x:Name="dpDateHired" TabIndex="6" HorizontalAlignment="Left" Height="26" Margin="105,308,0,0" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Date Hired" HorizontalAlignment="Left" Margin="33,313,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <DatePicker x:Name="dpBirthdate" TabIndex="6" HorizontalAlignment="Left" Height="26" Margin="104,144,0,0" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Birth Date" HorizontalAlignment="Left" Margin="32,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <TextBox x:Name="tbAddress" TabIndex="3" HorizontalAlignment="Left" Height="66" Margin="104,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+            <Label Content="Address" HorizontalAlignment="Left" Margin="32,180,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <Label Content="Active" HorizontalAlignment="Left" Margin="33,433,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <CheckBox x:Name="cboxIsActive"  HorizontalAlignment="Left" Margin="104,433,0,0" VerticalAlignment="Top"/>
+            <Label Content="Payroll Type" HorizontalAlignment="Left" Margin="33,407,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.132,0.077"/>
+            <RadioButton x:Name="rbLogistics" FontSize="9" Content="Logistics" HorizontalAlignment="Left" Margin="104,407,0,0" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbOtherDivision" FontSize="9" Content="Other Division" HorizontalAlignment="Left" Margin="176,407,0,0" VerticalAlignment="Top"/>
+        </Grid>
+
+
+    </Grid>
+
+</Controls:MetroWindow>
