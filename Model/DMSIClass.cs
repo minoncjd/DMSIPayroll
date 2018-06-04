@@ -107,7 +107,6 @@ namespace DMSIPayroll.Model
         public class PayrollDetails
         {
             public int EmployeeID { get; set; }
-
             public string EmployeeNumber { get; set; }
             public string Name { get; set; }
             public string Position { get; set; }
@@ -117,24 +116,26 @@ namespace DMSIPayroll.Model
             public decimal? LateUndertimeNoOfMins { get; set; }
             public decimal? LateUndertimeAmount { get; set; }
             public decimal? Gross { get; set; }
-
             public decimal? SSS { get; set; }
             public decimal? Philhealth { get; set; }
             public decimal? Pagibig { get; set; }
-
             public decimal? Net { get; set; }
-
             public decimal? HolidayNoOfDays { get; set; }
             public decimal? HolidayAmount { get; set; }
-
             public decimal? Deduction { get; set; }
             public decimal? Loan { get; set; }
-
             public decimal? NightDiff { get; set; }
             public decimal? OverTime { get; set; }
+            public decimal? OtherInc { get; set; }
+            public decimal? Adjustment { get; set; }
+            public decimal? Leave { get; set; }
 
-            public decimal? UPAdjustment { get; set; }
-            public decimal? OPAdjustment { get; set; }
+            public decimal? RP1NoOfDays { get; set; }
+            public decimal? RP1Amount { get; set; }
+            public decimal? RP2NoOfTrips { get; set; }
+            public decimal? RP2Amount { get; set; }
+
+
 
 
         }

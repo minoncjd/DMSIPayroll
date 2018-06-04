@@ -91,11 +91,11 @@
                         <DataGridTextColumn Header="NAME" Width="auto" Binding="{Binding Name}"/>
                         <DataGridTextColumn Header="POSITION" Width="auto" Binding="{Binding Position}"/>
                         <DataGridTextColumn Header="BASIC RATE" Width="auto" Binding="{Binding BasicRate, StringFormat='###,###.##'}"/>
-                        
-                        <DataGridTextColumn Header="RP (1ST) # OF DAYS" Width="auto" Binding="{Binding BasicNoOfDays, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="RP (1ST) AMT" Width="auto" Binding="{Binding BasicAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="RP (2ND) # OF DAYS" Width="auto"  Binding="{Binding HolidayNoOfDays, StringFormat='###,###.##'}" />
-                        <DataGridTextColumn Header="RP (2ND) AMT" Width="auto" Binding="{Binding HolidayAmount, StringFormat='###,###.##'}" />
+
+                        <DataGridTextColumn Header="RP (1ST) # OF DAYS" Width="auto" Binding="{Binding RP1NoOfDays, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="RP (1ST) AMT" Width="auto" Binding="{Binding RP1Amount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="RP (2ND) # OF TRIPS" Width="auto"  Binding="{Binding RP2NoOfTrips, StringFormat='###,###.##'}" />
+                        <DataGridTextColumn Header="RP (2ND) AMT" Width="auto" Binding="{Binding RP2Amount, StringFormat='###,###.##'}" />
                         <DataGridTextColumn Header="ND # OF HRS" Width="auto" Binding="{Binding LateUndertimeNoOfMins, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="ND AMNT" Width="auto" Binding="{Binding LateUndertimeAmount, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="OT # OF HRS" Width="auto" Binding="{Binding LateUndertimeNoOfMins, StringFormat='###,###.##'}"/>

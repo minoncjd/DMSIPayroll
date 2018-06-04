@@ -31,6 +31,8 @@ namespace DMSIPayroll
         List<Overtime> overtime = new List<Overtime>();
         List<NightDifferential> nightdiff = new List<NightDifferential>();
         List<Adjustment> adjustment = new List<Adjustment>();
+        List<OtherIncome> otherinc = new List<OtherIncome>();
+        List<Leave> leave = new List<Leave>();
         public PayrollProcess()
         {
             InitializeComponent();
@@ -77,7 +79,7 @@ namespace DMSIPayroll
                     var from = dpStDate.SelectedDate;
                     var to = dpToDate.SelectedDate;
                     var periodid = Convert.ToInt32(cbPeriod.SelectedValue);
-                    var employees = db.Employees.OrderBy(m => m.LastName).ToList();
+                    var employees = db.Employees.Where(m=>m.PayrollType == 2).OrderBy(m => m.LastName).ToList();
                     lPayrollDetails = new List<DMSIClass.PayrollDetails>();
 
 
@@ -92,11 +94,13 @@ namespace DMSIPayroll
                         overtime = db.Overtimes.Where(m => m.EmployeID == x.EmployeeID && from <= m.PayrollDate && to >= m.PayrollDate && m.PayrollID == null).ToList();
                         nightdiff = db.NightDifferentials.Where(m => m.EmployeeID == x.EmployeeID && from <= m.PayrollDate && to >= m.PayrollDate && m.PayrollID == null).ToList();
                         adjustment = db.Adjustments.Where(m => m.EmployeeID == x.EmployeeID && from <= m.PayrollDate && to >= m.PayrollDate && m.PayrollID == null).ToList();
+                        leave = db.Leaves.Where(m => m.EmployeeID == x.EmployeeID && from <= m.PayrollDate && to >= m.PayrollDate && m.PayrollID == null).ToList();
 
                         if (periodid == 1 || periodid == 2)
                         {
                             loan = db.Loans.Where(m => m.EmployeeID == x.EmployeeID && from >= m.StDate && to <= m.ToDate && (m.PeriodID == periodid || m.PeriodID == 3)).ToList();
                             deduction = db.Deductions.Where(m => m.EmployeeID == x.EmployeeID && from >= m.StDate && to <= m.ToDate && (m.PeriodID == periodid || m.PeriodID == 3)).ToList();
+                            otherinc = db.OtherIncomes.Where(m => m.EmployeeID == x.EmployeeID && from >= m.StDate && to <= m.ToDate && (m.PeriodID == periodid || m.PeriodID == 3)).ToList();
                         }
 
                         payroll.EmployeeID = x.EmployeeID;
@@ -106,17 +110,20 @@ namespace DMSIPayroll
                         payroll.BasicRate = position == null ? 0 : position.DailyRate;
                         payroll.BasicNoOfDays = income == null ? 0 : income.Sum(m => m.NoOfDays);
                         payroll.BasicAmount = payroll.BasicRate * payroll.BasicNoOfDays;
-                        payroll.LateUndertimeAmount = tardy == null ? 0 : tardy.Sum(M => M.Amount);
-                        payroll.LateUndertimeNoOfMins = tardy == null ? 0 : tardy.Sum(m => m.Value);
+                        payroll.NightDiff = nightdiff == null ? 0 : nightdiff.Sum(m => m.Amount);
+                        payroll.OverTime = overtime == null ? 0 : overtime.Sum(m => m.Amount);
                         payroll.HolidayNoOfDays = holiday == null ? 0 : holiday.Sum(m => m.NoOfDays);
                         payroll.HolidayAmount = holiday == null ? 0 : holiday.Sum(m => m.Amount);
-                        payroll.OverTime = overtime == null ? 0 : overtime.Sum(m => m.Amount);
-                        payroll.NightDiff = nightdiff == null ? 0 : nightdiff.Sum(m => m.Amount);
+                        payroll.LateUndertimeAmount = tardy == null ? 0 : tardy.Sum(M => M.Amount);
+                        payroll.LateUndertimeNoOfMins = tardy == null ? 0 : tardy.Sum(m => m.Value);
+                        payroll.Adjustment = adjustment == null ? 0 : adjustment.Sum(m => m.Amount);
+                        payroll.OtherInc = otherinc == null ? 0 : otherinc.Sum(m => m.Amount);
                         payroll.Gross = (payroll.BasicAmount + payroll.HolidayAmount + payroll.OverTime + payroll.NightDiff) - payroll.LateUndertimeAmount;
+
+
                         payroll.Deduction = deduction == null ? 0 : deduction.Sum(m => m.Amortization);
                         payroll.Loan = loan == null ? 0 : loan.Sum(m => m.Amortization);
-                        //payroll.OPAdjustment = adjustment == null ? 0 : adjustment.Where(m => m.Type == 1).Sum(m => m.Amount);
-                        //payroll.UPAdjustment = adjustment == null ? 0 : adjustment.Where(m => m.Type == 2).Sum(m => m.Amount);
+                        payroll.Leave = leave == null ? 0 : leave.Sum(m => m.Amount);
                         var sss = db.PYSSSes.Where(m => m.MinSalary <= payroll.Gross && m.MaxSalary >= payroll.Gross).FirstOrDefault();
                         var philhealth = db.Philhealths.Where(m => m.MinSalary <= payroll.Gross && m.MaxSalary >= payroll.Gross).FirstOrDefault();
 
@@ -145,7 +152,7 @@ namespace DMSIPayroll
 
                         payroll.SSS = sss == null ? 0 : sss.Ee;
 
-                        payroll.Net = (payroll.Gross + payroll.UPAdjustment - payroll.OPAdjustment)  - (payroll.SSS + payroll.Pagibig + payroll.Philhealth + payroll.Loan + payroll.Deduction);
+                        payroll.Net = (payroll.Gross)  - (payroll.SSS + payroll.Pagibig + payroll.Philhealth + payroll.Loan + payroll.Deduction);
                         lPayrollDetails.Add(payroll);
 
                     }

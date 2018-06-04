@@ -99,8 +99,8 @@
                         <DataGridTextColumn Header="HO AMOUNT" Width="auto" Binding="{Binding HolidayAmount, StringFormat='###,###.##'}" />
                         <DataGridTextColumn Header="LATE/UT NO. OF MINS" Width="auto" Binding="{Binding LateUndertimeNoOfMins, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="LATE/UT AMOUNT" Width="auto" Binding="{Binding LateUndertimeAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="ADJUSTMENT" Width="auto" Binding="{Binding LateUndertimeAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="OTHER INC" Width="auto" Binding="{Binding LateUndertimeAmount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ADJUSTMENT" Width="auto" Binding="{Binding Adjustment, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OTHER INC" Width="auto" Binding="{Binding OtherInc, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn FontWeight="UltraBold"  Header="GROSS" Width="auto" Binding="{Binding Gross, StringFormat='###,###.##'}"/>
                     
                         <DataGridTextColumn Header="SSS" Width="auto" Binding="{Binding SSS, StringFormat='###,###.##'}"/>
@@ -109,7 +109,7 @@
                     
                         <DataGridTextColumn Header="LOANS" Width="auto" Binding="{Binding Loan, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="DEDUCTIONS" Width="auto" Binding="{Binding Deduction, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="5 DAYS SIL" Width="auto" Binding="{Binding Loan, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="5 DAYS SIL" Width="auto" Binding="{Binding Leave, StringFormat='###,###.##'}"/>
 
 
                         <DataGridTextColumn FontWeight="UltraBold" Header="NET PAY" Width="auto" Binding="{Binding Net, StringFormat='###,###.##'}"/>
