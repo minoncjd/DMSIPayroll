@@ -14,7 +14,6 @@ namespace DMSIPayroll.Model
             public string Date { get; set; }
             public string Time { get; set; }
             public string Mode { get; set; }
-
         }
 
         public class AttendanceSource
@@ -188,6 +187,13 @@ namespace DMSIPayroll.Model
             public string NightDiffIDPeriod { get; set; }
             public string NightDiffIDType { get; set; }
             public int PayrollID { get; set; }
+        }
+
+        public class CivilStatus
+        {
+        
+            public string Name { get; set; }
+            public string Value { get; set; }
         }
 
 

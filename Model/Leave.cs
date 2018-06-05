@@ -21,7 +21,7 @@ namespace DMSIPayroll.Model
         public Nullable<int> PayrollID { get; set; }
         public decimal Value { get; set; }
     
-        public virtual Employee Employee { get; set; }
         public virtual Payroll Payroll { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

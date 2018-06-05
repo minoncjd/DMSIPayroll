@@ -22,8 +22,8 @@ namespace DMSIPayroll.Model
         public System.DateTime StDate { get; set; }
         public System.DateTime ToDate { get; set; }
     
-        public virtual Employee Employee { get; set; }
         public virtual IncomeType IncomeType { get; set; }
         public virtual Period Period { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

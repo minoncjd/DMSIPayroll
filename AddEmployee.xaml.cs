@@ -48,11 +48,29 @@ namespace DMSIPayroll
                     dpDateHired.SelectedDate = employee.DateHired;
                     dpBirthdate.SelectedDate = employee.Birthdate;
                     dpDateResigned.SelectedDate = employee.DateResigned;
+                    cbCivilStatus.SelectedValue = employee.CivilStatus;
+                    tbSSS.Text = employee.SSS;
+                    tbPhilhealth.Text = employee.Philhealth;
+                    tbHDMF.Text = employee.HMDF;
+                    tbTIN.Text = employee.Tin;
+                    tbGuardian.Text = employee.Guardian;
+                    tbGuardianContactNo.Text = employee.GuardianContactNo;
+                    tbContactNo.Text = employee.ContactNo;
+                    tbHDMF.Text = employee.HMDF;
+                    
+                    if (employee.Gender == "M")
+                    {
+                        rbMale.IsChecked = true;
+                    }
+                    else if (employee.Gender == "F")
+                    {
+                        rbFemale.IsChecked = true;
+                    }
                     if (employee.PayrollType == 1)
                     {
                         rbLogistics.IsChecked = true;
                     }
-                    else
+                    else if (employee.PayrollType == 2)
                     {
                         rbOtherDivision.IsChecked = true;
                     }
@@ -87,6 +105,15 @@ namespace DMSIPayroll
                     cbPosition.ItemsSource = db.EmployeePositions.OrderBy(m => m.PositionName).ToList();
                     cbPosition.DisplayMemberPath = "PositionName";
                     cbPosition.SelectedValuePath = "EmployeePositionID";
+
+                    List<DMSIClass.CivilStatus> civilStatus = new List<DMSIClass.CivilStatus>();
+                    civilStatus.Add(new DMSIClass.CivilStatus() { Name = "Single", Value ="S" });
+                    civilStatus.Add(new DMSIClass.CivilStatus() { Name = "Married", Value = "M" });
+                    civilStatus.Add(new DMSIClass.CivilStatus() { Name = "Divorced", Value = "D" });
+                    civilStatus.Add(new DMSIClass.CivilStatus() { Name = "Widowed", Value = "W" });
+                    cbCivilStatus.ItemsSource = civilStatus.ToList();
+                    cbCivilStatus.DisplayMemberPath = "Name";
+                    cbCivilStatus.SelectedValuePath = "Value";
                 }
             }
             catch (Exception)
@@ -130,14 +157,41 @@ namespace DMSIPayroll
                         employee.DateHired = dpDateHired.SelectedDate == null ? null : dpDateHired.SelectedDate;
                         employee.Birthdate = dpBirthdate.SelectedDate == null ? null : dpBirthdate.SelectedDate;
                         employee.Address = tbAddress.Text;
+                        employee.CivilStatus = Convert.ToString(cbCivilStatus.SelectedValue);
+                        employee.ContactNo = tbContactNo.Text;
+                        employee.Guardian = tbGuardian.Text;
+                        employee.GuardianContactNo = tbGuardianContactNo.Text;
+                        employee.Relationship = tbRelationship.Text;
+                        employee.SSS = tbSSS.Text;
+                        employee.Philhealth = tbPhilhealth.Text;
+                        employee.Tin = tbTIN.Text;
+                        
+                        if (rbFemale.IsChecked == true)
+                        {
+                            employee.Gender = "F";
+                        }
+                        else if (rbMale.IsChecked == true)
+                        {
+                            employee.Gender = "M";
+                        }
+                       
                         if (rbLogistics.IsChecked == true)
                         {
                             employee.PayrollType = 1;
                         }
-                        else
+                        else if (rbOtherDivision.IsChecked == true)
                         {
                             employee.PayrollType = 2;
                         }
+                        if (cboxIsActive.IsChecked == true)
+                        {
+                            employee.IsActive = true;
+                        }
+                        else
+                        {
+                            employee.IsActive = false;
+                        }
+
                         db.Employees.Add(employee);
                         db.SaveChanges();
                         MessageBox.Show("Add Succesful", "System Succes!", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -157,15 +211,41 @@ namespace DMSIPayroll
                         employee.DateHired = dpDateHired.SelectedDate == null ? null : dpDateHired.SelectedDate;
                         employee.Birthdate = dpBirthdate.SelectedDate == null ? null : dpBirthdate.SelectedDate;
                         employee.Address = tbAddress.Text;
-                        employee.IsActive = cboxIsActive.IsChecked == false ? false : true;
+                        employee.CivilStatus = Convert.ToString(cbCivilStatus.SelectedValue);
+                        employee.ContactNo = tbContactNo.Text;
+                        employee.Guardian = tbGuardian.Text;
+                        employee.GuardianContactNo = tbGuardianContactNo.Text;
+                        employee.Relationship = tbRelationship.Text;
+                        employee.SSS = tbSSS.Text;
+                        employee.Philhealth = tbPhilhealth.Text;
+                        employee.Tin = tbTIN.Text;
+
+                        if (rbFemale.IsChecked == true)
+                        {
+                            employee.Gender = "F";
+                        }
+                        else if (rbMale.IsChecked == true)
+                        {
+                            employee.Gender = "M";
+                        }
+
                         if (rbLogistics.IsChecked == true)
                         {
                             employee.PayrollType = 1;
                         }
-                        else
+                        else if (rbOtherDivision.IsChecked == true)
                         {
                             employee.PayrollType = 2;
                         }
+                        if (cboxIsActive.IsChecked == true)
+                        {
+                            employee.IsActive = true;
+                        }
+                        else
+                        {
+                            employee.IsActive = false;
+                        }
+
                         db.SaveChanges();
                         MessageBox.Show("Update Succesful", "System Succes!", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
@@ -192,6 +272,17 @@ namespace DMSIPayroll
             dpBirthdate.SelectedDate = null;
             dpDateHired.SelectedDate = null;
             tbAddress.Text = "";
+            tbTIN.Text = "";
+            tbSSS.Text = "";
+            tbRelationship.Text = "";
+            tbGuardian.Text = "";
+            tbContactNo.Text = "";
+            tbGuardianContactNo.Text = "";
+            tbPhilhealth.Text = "";
+            tbHDMF.Text = "";
+            cbCivilStatus.Text = "";
+            rbFemale.IsChecked = false;
+            rbFemale.IsChecked = false;
         }
     }
 }

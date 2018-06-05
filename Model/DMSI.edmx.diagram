@@ -40,23 +40,23 @@
         <EntityTypeShape EntityType="DMSIPayrollModel.Adjustment" Width="1.5" PointX="3.375" PointY="13.75" />
         <EntityTypeShape EntityType="DMSIPayrollModel.Holiday" Width="1.5" PointX="16.25" PointY="2.375" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Holidays_HolidayType" />
-        <EntityTypeShape EntityType="DMSIPayrollModel.Employee" Width="1.5" PointX="3.75" PointY="7.625" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Income" Width="1.5" PointX="6" PointY="13.75" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.OtherIncome" Width="1.5" PointX="11.25" PointY="5.875" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_IncomeType" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Period" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Leave" Width="1.5" PointX="24.125" PointY="7.375" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Payroll" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Employee" Width="1.5" PointX="8.75" PointY="13.25" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Employee_Company" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Deduction_Employee" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Employee_EmployeePosition" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Holidays_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Income_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Employee" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Loan_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Employee" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Payroll_Employee" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Tardy_Employee" />
-        <EntityTypeShape EntityType="DMSIPayrollModel.Income" Width="1.5" PointX="6" PointY="13.75" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_Income_Employee" />
-        <EntityTypeShape EntityType="DMSIPayrollModel.OtherIncome" Width="1.5" PointX="11.25" PointY="5.875" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Employee" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_IncomeType" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Period" />
-        <EntityTypeShape EntityType="DMSIPayrollModel.Leave" Width="1.5" PointX="24.125" PointY="7.375" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Employee" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Payroll" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

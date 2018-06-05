@@ -50,10 +50,10 @@ namespace DMSIPayroll.Model
         public virtual DbSet<NightShiftType> NightShiftTypes { get; set; }
         public virtual DbSet<Adjustment> Adjustments { get; set; }
         public virtual DbSet<Holiday> Holidays { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Income> Incomes { get; set; }
         public virtual DbSet<OtherIncome> OtherIncomes { get; set; }
         public virtual DbSet<Leave> Leaves { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
     
         public virtual ObjectResult<GetEmployeeDTR_Result> GetEmployeeDTR(string startDate, string endDate, Nullable<int> bioid)
         {

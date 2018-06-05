@@ -42,8 +42,8 @@ namespace DMSIPayroll.Model
         public virtual ICollection<PayrollDetails_Loan> PayrollDetails_Loan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tardy> Tardies { get; set; }
-        public virtual Employee Employee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Leave> Leaves { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

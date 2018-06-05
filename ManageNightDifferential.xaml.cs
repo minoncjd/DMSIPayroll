@@ -42,7 +42,7 @@ namespace DMSIPayroll
                         DMSIClass._NightDiff nightdiff = new DMSIClass._NightDiff();
                         var nightshifttype = db.NightShiftTypes.Where(m => m.NightShiftTypeID == x.NightShiftTypeID).FirstOrDefault();
                         var emp = db.Employees.Where(m => m.EmployeeID == x.EmployeeID).FirstOrDefault();
-                        var position = db.EmployeePositions.Where(m => m.EmployeePositionID == emp.EmployeeID).FirstOrDefault();
+                        var position = db.EmployeePositions.Where(m => m.EmployeePositionID == emp.EmployeePositionID).FirstOrDefault();
                         nightdiff.NightDiffIDType = nightshifttype.Description;
                         nightdiff.NightDiffID = x.NightDifferentialID;
                         nightdiff.NightDiffIDPeriod = x.StDate.ToShortDateString() + " - " + x.ToDate.ToShortDateString();
