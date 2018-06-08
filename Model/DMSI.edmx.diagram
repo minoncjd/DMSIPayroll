@@ -21,18 +21,13 @@
         <AssociationConnector Association="DMSIPayrollModel.FK_Deduction_Period" />
         <EntityTypeShape EntityType="DMSIPayrollModel.PYSSS" Width="1.5" PointX="6.375" PointY="9.75" />
         <EntityTypeShape EntityType="DMSIPayrollModel.Philhealth" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DMSIPayrollModel.Payroll" Width="1.5" PointX="18.875" PointY="3.875" />
         <EntityTypeShape EntityType="DMSIPayrollModel.PYTable" Width="1.5" PointX="18.875" PointY="7.625" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_Payroll_PYTable" />
         <EntityTypeShape EntityType="DMSIPayrollModel.PayrollDetails_Deduction" Width="1.5" PointX="21.125" PointY="8" />
         <EntityTypeShape EntityType="DMSIPayrollModel.PayrollDetails_Loan" Width="1.5" PointX="21.125" PointY="4.25" />
         <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Deduction_Deduction" />
         <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Loan_Loan" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Deduction_Payroll" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Loan_Payroll" />
         <EntityTypeShape EntityType="DMSIPayrollModel.BiometricsLog" Width="1.5" PointX="8.375" PointY="9.75" />
         <EntityTypeShape EntityType="DMSIPayrollModel.Tardy" Width="1.5" PointX="21.125" PointY="0.75" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_Tardy_Payroll" />
         <EntityTypeShape EntityType="DMSIPayrollModel.OvertimeType" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="DMSIPayrollModel.Overtime" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="DMSIPayrollModel.NightDifferential" Width="1.5" PointX="10.75" PointY="9.75" />
@@ -45,7 +40,6 @@
         <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_IncomeType" />
         <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Period" />
         <EntityTypeShape EntityType="DMSIPayrollModel.Leave" Width="1.5" PointX="24.125" PointY="7.375" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Payroll" />
         <EntityTypeShape EntityType="DMSIPayrollModel.Employee" Width="1.5" PointX="8.75" PointY="13.25" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Employee_Company" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Deduction_Employee" />
@@ -55,8 +49,20 @@
         <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Employee" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Loan_Employee" />
         <AssociationConnector Association="DMSIPayrollModel.FK_OtherIncome_Employee" />
-        <AssociationConnector Association="DMSIPayrollModel.FK_Payroll_Employee" />
         <AssociationConnector Association="DMSIPayrollModel.FK_Tardy_Employee" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.PayrollDetails_OtherIncome" Width="1.5" PointX="23.375" PointY="11.375" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_OtherIncome_OtherIncome" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.Payroll" Width="1.5" PointX="21.125" PointY="11.25" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Payroll_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Leave_Payroll" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Payroll_PYTable" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Deduction_Payroll" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_Loan_Payroll" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollDetails_OtherIncome_Payroll" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_Tardy_Payroll" />
+        <EntityTypeShape EntityType="DMSIPayrollModel.PayrollLogistic" Width="1.5" PointX="24.125" PointY="14.75" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollLogistics_Employee" />
+        <AssociationConnector Association="DMSIPayrollModel.FK_PayrollLogistics_PYTable" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

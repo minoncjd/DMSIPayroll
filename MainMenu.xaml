@@ -299,7 +299,15 @@
                             </Rectangle.OpacityMask>
                         </Rectangle>
                     </Controls:Tile>
-                    
+
+                    <Controls:Tile TitleFontSize="12" Title="PAYROLL LIST"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnPayrollList" Click="btnPayrollList_Click">
+                        <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_people_profile}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Controls:Tile>
+
                     <Controls:Tile TitleFontSize="12" Title="EMPLOYEE MASTER FORM"  Style="{StaticResource SmallTileStyle}"  FontFamily="Roboto" x:Name="btnPayrollDetails" Click="btnPayrollDetails_Click">
                         <Rectangle Fill="White" Height="50" Width="60" Margin="0,0,0,15">
                             <Rectangle.OpacityMask>

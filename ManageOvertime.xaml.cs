@@ -35,14 +35,14 @@ namespace DMSIPayroll
 
                 using (var db = new DMSIPayrollEntities())
                 {
-                    var overtimes = db.Overtimes.ToList();
+                    var overtimes = db.Overtimes.Where(m => m.EmployeID == empid).ToList();
                     lOvertime = new List<DMSIClass._Overtime>();
                     foreach (var x in overtimes)
                     {
                         DMSIClass._Overtime overtime = new DMSIClass._Overtime();
                         var overtimetype = db.OvertimeTypes.Where(m => m.OvertimeTypeID == x.OvertimeTypeID).FirstOrDefault();
                         var emp = db.Employees.Where(m => m.EmployeeID == x.EmployeID).FirstOrDefault();
-                        var position = db.EmployeePositions.Where(m => m.EmployeePositionID == emp.EmployeeID).FirstOrDefault();
+                        var position = db.EmployeePositions.Where(m => m.EmployeePositionID == emp.EmployeePositionID).FirstOrDefault();
                         overtime.OvertimeType = overtimetype.Description;
                         overtime.OvertimeID = x.OvertimeID;
                         overtime.OvertimePeriod = x.StDate.ToShortDateString() + " - " + x.ToDate.ToShortDateString();

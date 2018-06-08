@@ -1,6 +1,5 @@
 ﻿using DMSIPayroll.Model;
 using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +17,9 @@ using System.Windows.Shapes;
 namespace DMSIPayroll
 {
     /// <summary>
-    /// Interaction logic for PayrollPost.xaml
+    /// Interaction logic for PayrollPostLogistics.xaml
     /// </summary>
-    public partial class PayrollPost : MetroWindow
+    public partial class PayrollPostLogistics : MetroWindow
     {
         public DateTime StDate;
         public DateTime Todate;
@@ -36,10 +35,14 @@ namespace DMSIPayroll
         public List<Leave> leave = new List<Leave>();
         public List<DMSIClass.PayrollDetails> lPayrollDetails = new List<DMSIClass.PayrollDetails>();
 
-
-        public PayrollPost()
+        public PayrollPostLogistics()
         {
             InitializeComponent();
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -57,13 +60,14 @@ namespace DMSIPayroll
                     PYTable pyTable = new PYTable();
                     foreach (var x in lPayrollDetails)
                     {
-                        Payroll payroll = new Payroll();
+                        PayrollLogistic payroll = new PayrollLogistic();
 
-                        pyTable.Payrolls.Add(new Payroll()
+                        pyTable.PayrollLogistics.Add(new PayrollLogistic()
                         {
 
                             EmployeeID = x.EmployeeID,
-                            Income = Convert.ToDecimal(x.BasicAmount == null ? 0 : x.BasicAmount),
+                            RP1 = Convert.ToDecimal(x.RP1Amount == null ? 0 : x.RP1Amount),
+                            RP2 = Convert.ToDecimal(x.RP2Amount == null ? 0 : x.RP2Amount),
                             NightDifferential = Convert.ToDecimal(x.NightDiffamount),
                             Overtime = Convert.ToDecimal(x.OTAmount),
                             Holiday = Convert.ToDecimal(x.HolidayAmount),
@@ -85,13 +89,13 @@ namespace DMSIPayroll
                     pyTable.ToDate = Todate;
                     pyTable.PYDate = dpPayrollDate.SelectedDate.Value;
                     pyTable.Comments = tbComment.Text;
-                    pyTable.PYType = 2;
+                    pyTable.PYType = 1;
 
                     db.PYTables.Add(pyTable);
                     db.SaveChanges();
 
                     var pytable = db.PYTables.OrderByDescending(m => m.PYTableID).Take(1).FirstOrDefault();
-                    var payrolls = db.Payrolls.Where(m => m.PYTableID == pytable.PYTableID).ToList();
+                    var payrolls = db.PayrollLogistics.Where(m => m.PYTableID == pytable.PYTableID).ToList();
 
                     foreach (var x in payrolls)
                     {
@@ -194,11 +198,6 @@ namespace DMSIPayroll
                 MessageBox.Show("Something went wrong.", "System Error!", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
-        }
-
-        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void clear()

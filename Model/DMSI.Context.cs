@@ -38,7 +38,6 @@ namespace DMSIPayroll.Model
         public virtual DbSet<Deduction> Deductions { get; set; }
         public virtual DbSet<PYSSS> PYSSSes { get; set; }
         public virtual DbSet<Philhealth> Philhealths { get; set; }
-        public virtual DbSet<Payroll> Payrolls { get; set; }
         public virtual DbSet<PYTable> PYTables { get; set; }
         public virtual DbSet<PayrollDetails_Deduction> PayrollDetails_Deduction { get; set; }
         public virtual DbSet<PayrollDetails_Loan> PayrollDetails_Loan { get; set; }
@@ -54,6 +53,9 @@ namespace DMSIPayroll.Model
         public virtual DbSet<OtherIncome> OtherIncomes { get; set; }
         public virtual DbSet<Leave> Leaves { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<PayrollDetails_OtherIncome> PayrollDetails_OtherIncome { get; set; }
+        public virtual DbSet<Payroll> Payrolls { get; set; }
+        public virtual DbSet<PayrollLogistic> PayrollLogistics { get; set; }
     
         public virtual ObjectResult<GetEmployeeDTR_Result> GetEmployeeDTR(string startDate, string endDate, Nullable<int> bioid)
         {

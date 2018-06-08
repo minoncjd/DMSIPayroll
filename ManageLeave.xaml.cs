@@ -36,7 +36,7 @@ namespace DMSIPayroll
 
                 using (var db = new DMSIPayrollEntities())
                 {
-                    var leaves = db.Leaves.ToList();
+                    var leaves = db.Leaves.Where(m=>m.EmployeeID == empid).ToList();
                     lLeave = new List<Leave>();
                     foreach (var x in leaves)
                     {

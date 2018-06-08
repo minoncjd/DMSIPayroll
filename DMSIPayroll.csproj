@@ -424,6 +424,12 @@
     <Compile Include="Model\PayrollDetails_Loan.cs">
       <DependentUpon>DMSI.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PayrollDetails_OtherIncome.cs">
+      <DependentUpon>DMSI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PayrollLogistic.cs">
+      <DependentUpon>DMSI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Period.cs">
       <DependentUpon>DMSI.tt</DependentUpon>
     </Compile>
@@ -438,6 +444,21 @@
     </Compile>
     <Compile Include="Model\Tardy.cs">
       <DependentUpon>DMSI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PayrollList.xaml.cs">
+      <DependentUpon>PayrollList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PayrollListLogistics.xaml.cs">
+      <DependentUpon>PayrollListLogistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PayrollTableMenu.xaml.cs">
+      <DependentUpon>PayrollTableMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PayrollPostLogistics.xaml.cs">
+      <DependentUpon>PayrollPostLogistics.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PayrollTableList.xaml.cs">
+      <DependentUpon>PayrollTableList.xaml</DependentUpon>
     </Compile>
     <Compile Include="PayrollPost.xaml.cs">
       <DependentUpon>PayrollPost.xaml</DependentUpon>
@@ -463,6 +484,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Report\BillingLogistics.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BillingLogistics.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\EmployeeDTR.cs">
       <AutoGen>True</AutoGen>
@@ -650,6 +677,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PayrollList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PayrollListLogistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PayrollTableMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PayrollPostLogistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PayrollTableList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PayrollPost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -704,6 +751,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\BillingLogistics.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BillingLogistics.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\EmployeeDTR.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

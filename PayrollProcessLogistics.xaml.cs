@@ -1,5 +1,6 @@
 ﻿using DMSIPayroll.Model;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,15 +106,17 @@ namespace DMSIPayroll
                         payroll.RP2NoOfTrips = income == null ? 0 : income.Where(m => m.Trip == 2).Sum(m => m.NoOfDays);
                         payroll.RP2Amount = payroll.BasicRate * payroll.RP2NoOfTrips;
 
-                        payroll.NightDiff = nightdiff == null ? 0 : nightdiff.Sum(m => m.Amount);
-                        payroll.OverTime = overtime == null ? 0 : overtime.Sum(m => m.Amount);
+                        payroll.NightDiffamount = nightdiff == null ? 0 : nightdiff.Sum(m => m.Amount);
+                        payroll.NightDiffHours = nightdiff == null ? 0 : nightdiff.Sum(m => m.Value);
+                        payroll.OTAmount = overtime == null ? 0 : overtime.Sum(m => m.Amount);
+                        payroll.OTHours = overtime == null ? 0 : overtime.Sum(m => m.Value);
                         payroll.HolidayNoOfDays = holiday == null ? 0 : holiday.Sum(m => m.NoOfDays);
                         payroll.HolidayAmount = holiday == null ? 0 : holiday.Sum(m => m.Amount);
                         payroll.LateUndertimeAmount = tardy == null ? 0 : tardy.Sum(M => M.Amount);
                         payroll.LateUndertimeNoOfMins = tardy == null ? 0 : tardy.Sum(m => m.Value);
                         payroll.Adjustment = adjustment == null ? 0 : adjustment.Sum(m => m.Amount);
                         payroll.OtherInc = otherinc == null ? 0 : otherinc.Sum(m => m.Amount);
-                        payroll.Gross = (payroll.BasicAmount + payroll.HolidayAmount + payroll.OverTime + payroll.NightDiff) - payroll.LateUndertimeAmount;
+                        payroll.Gross = (payroll.RP1Amount + payroll.RP2Amount + payroll.HolidayAmount + payroll.OTAmount + payroll.NightDiffamount + payroll.Adjustment + payroll.OtherInc) - payroll.LateUndertimeAmount;
 
 
                         payroll.Deduction = deduction == null ? 0 : deduction.Sum(m => m.Amortization);
@@ -171,9 +174,28 @@ namespace DMSIPayroll
             employeeMaster.Show();
         }
 
-        private void btnPost_Click(object sender, RoutedEventArgs e)
+        private async void btnPost_Click(object sender, RoutedEventArgs e)
         {
+            MessageDialogResult mdr = await this.ShowMessageAsync("POST", "ARE YOU SURE YOU WANT TO POST THIS PAYROLL?", MessageDialogStyle.AffirmativeAndNegative);
 
+            if (mdr == MessageDialogResult.Affirmative)
+            {
+                PayrollPostLogistics payrollPost = new PayrollPostLogistics();
+                payrollPost.StDate = dpStDate.SelectedDate.Value;
+                payrollPost.Todate = dpToDate.SelectedDate.Value;
+                payrollPost.lPayrollDetails = lPayrollDetails;
+                payrollPost.income = income;
+                payrollPost.tardy = tardy;
+                payrollPost.holiday = holiday;
+                payrollPost.loan = loan;
+                payrollPost.deduction = deduction;
+                payrollPost.overtime = overtime;
+                payrollPost.nightdiff = nightdiff;
+                payrollPost.adjustment = adjustment;
+                payrollPost.leave = leave;
+                payrollPost.otherinc = otherinc;
+                payrollPost.ShowDialog();
+            }
         }
     }
 }

@@ -12,16 +12,14 @@ namespace DMSIPayroll.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Leave
+    public partial class PayrollDetails_OtherIncome
     {
-        public int LeaveID { get; set; }
-        public int EmployeeID { get; set; }
+        public int PayrollDetails_OtherIncomeID { get; set; }
+        public int PayrollID { get; set; }
+        public int OtherIncomeID { get; set; }
         public decimal Amount { get; set; }
-        public System.DateTime PayrollDate { get; set; }
-        public Nullable<int> PayrollID { get; set; }
-        public decimal Value { get; set; }
     
-        public virtual Employee Employee { get; set; }
+        public virtual OtherIncome OtherIncome { get; set; }
         public virtual Payroll Payroll { get; set; }
     }
 }

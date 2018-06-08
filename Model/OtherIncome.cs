@@ -14,6 +14,12 @@ namespace DMSIPayroll.Model
     
     public partial class OtherIncome
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public OtherIncome()
+        {
+            this.PayrollDetails_OtherIncome = new HashSet<PayrollDetails_OtherIncome>();
+        }
+    
         public int OtherIncomeID { get; set; }
         public int EmployeeID { get; set; }
         public int IncomeTypeID { get; set; }
@@ -25,5 +31,7 @@ namespace DMSIPayroll.Model
         public virtual IncomeType IncomeType { get; set; }
         public virtual Period Period { get; set; }
         public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PayrollDetails_OtherIncome> PayrollDetails_OtherIncome { get; set; }
     }
 }

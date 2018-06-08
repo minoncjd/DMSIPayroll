@@ -1,0 +1,99 @@
+﻿<Controls:MetroWindow  x:Class="DMSIPayroll.PayrollListLogistics"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" GlowBrush="Black"
+        Title="PAYROLL LIST" WindowTitleBrush="#FF707070" Height="636.81" Width="1121.863" ResizeMode="NoResize" ShowInTaskbar="True" WindowStartupLocation="CenterScreen" ShowMaxRestoreButton="False" ShowMinButton="False" Loaded="MetroWindow_Loaded" >
+
+    <Controls:MetroWindow.Resources>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="FontSize" Value="8"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+
+    </Controls:MetroWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Button x:Name="btnRefresh" Margin="3" Grid.Row="2" Click="btnRefresh_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Rectangle Width="20" Height="20"
+                Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_refresh}" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Label Content="REFRESH" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+
+
+
+
+        </Grid>
+
+
+        <Grid Grid.Row="1" ScrollViewer.CanContentScroll="True">
+
+            <ScrollViewer  ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                <DataGrid FontSize="10" Margin="3"  BorderThickness="0.5"  x:Name="datagridview" AutoGenerateColumns="False"
+                      RowHeight="30" SelectionMode="Single" BorderBrush="Black" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="Black" IsReadOnly="True" ScrollViewer.CanContentScroll="True" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="EMP #" Width="auto" Binding="{Binding EmployeeNumber}"/>
+                        <DataGridTextColumn Header="NAME" Width="auto" Binding="{Binding EmployeeName}"/>
+                        <DataGridTextColumn Header="POSITION" Width="auto" Binding="{Binding Position}"/>
+                        <DataGridTextColumn Header="REGULAR PAY" Width="auto" Binding="{Binding RP1, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="2ND TRIPS" Width="auto" Binding="{Binding RP2, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ND" Width="auto" Binding="{Binding ND, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OT" Width="auto" Binding="{Binding OT, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="HO" Width="auto" Binding="{Binding HO, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="LATE/UT" Width="auto" Binding="{Binding Late, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ADJUSTMENT" Width="auto" Binding="{Binding Adjustment, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OTHER INC" Width="auto" Binding="{Binding OtherInc, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn FontWeight="UltraBold" Header="GROSS" Width="auto" Binding="{Binding Gross, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="SSS" Width="auto" Binding="{Binding Sss, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="PAGIBIG" Width="auto" Binding="{Binding Pagibig, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="PHILHEALTH" Width="auto" Binding="{Binding Philhealth, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="LOAN" Width="auto" Binding="{Binding Loan, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="DEDUCTION" Width="auto" Binding="{Binding Deduction, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="LEAVE" Width="auto" Binding="{Binding Leave, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn FontWeight="UltraBold" Header="NET PAY" Width="auto" Binding="{Binding Net, StringFormat='###,###.##'}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+
+        </Grid>
+
+
+
+    </Grid>
+
+</Controls:MetroWindow>
+

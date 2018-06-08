@@ -18,6 +18,7 @@ namespace DMSIPayroll.Model
         public PYTable()
         {
             this.Payrolls = new HashSet<Payroll>();
+            this.PayrollLogistics = new HashSet<PayrollLogistic>();
         }
     
         public int PYTableID { get; set; }
@@ -26,8 +27,11 @@ namespace DMSIPayroll.Model
         public System.DateTime ToDate { get; set; }
         public System.DateTime PYDate { get; set; }
         public string Comments { get; set; }
+        public Nullable<int> PYType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payroll> Payrolls { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PayrollLogistic> PayrollLogistics { get; set; }
     }
 }

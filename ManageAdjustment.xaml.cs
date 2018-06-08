@@ -36,7 +36,7 @@ namespace DMSIPayroll
 
                 using (var db = new DMSIPayrollEntities())
                 {
-                    var adjustments = db.Adjustments.ToList();
+                    var adjustments = db.Adjustments.Where(m=>m.EmployeeID == empid).ToList();
                     lAdjustment = new List<DMSIClass._Adjustment>();
                     foreach (var x in adjustments)
                     {

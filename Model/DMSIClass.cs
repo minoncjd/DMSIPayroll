@@ -102,6 +102,40 @@ namespace DMSIPayroll.Model
 
         }
 
+        public class PYTable
+        {
+            public int PYTableID { get; set; }
+            public string PYCode { get; set; }
+            public string Duration { get; set; }
+            public DateTime PYDate { get; set; }
+            public string Comments { get; set; }
+        }
+
+        public class PayrollList
+        {
+            public int PayrollID { get; set; }
+            public string EmployeeName { get; set; }
+            public string EmployeeNumber { get; set; }
+            public string Position { get; set; }
+            public decimal? Income { get; set; }
+            public decimal? ND { get; set; }
+            public decimal? OT { get; set; }
+            public decimal? HO { get; set; }
+            public decimal? Late { get; set; }
+            public decimal? Adjustment { get; set; }
+            public decimal? OtherInc { get; set; }
+            public decimal? Gross { get; set; }
+            public decimal? Pagibig { get; set; }
+            public decimal? Sss { get; set; }
+            public decimal? Philhealth { get; set; }
+            public decimal? Loan { get; set; }
+            public decimal? Deduction { get; set; }
+            public decimal? Leave { get; set; }
+            public decimal? Net { get; set; }
+            public decimal? RP1 { get; set; }
+            public decimal? RP2 { get; set; }
+        }
+        
 
         public class PayrollDetails
         {
@@ -123,8 +157,10 @@ namespace DMSIPayroll.Model
             public decimal? HolidayAmount { get; set; }
             public decimal? Deduction { get; set; }
             public decimal? Loan { get; set; }
-            public decimal? NightDiff { get; set; }
-            public decimal? OverTime { get; set; }
+            public decimal? NightDiffHours { get; set; }
+            public decimal? NightDiffamount { get; set; }
+            public decimal? OTAmount { get; set; }
+            public decimal? OTHours { get; set; }
             public decimal? OtherInc { get; set; }
             public decimal? Adjustment { get; set; }
             public decimal? Leave { get; set; }

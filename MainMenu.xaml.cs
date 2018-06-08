@@ -142,5 +142,11 @@ namespace DMSIPayroll
             ManageNightShiftType manageNightShiftType = new ManageNightShiftType();
             manageNightShiftType.Show();
         }
+
+        private void btnPayrollList_Click(object sender, RoutedEventArgs e)
+        {
+            PayrollTableMenu payrollTableMenu = new PayrollTableMenu();
+            payrollTableMenu.Show();
+        }
     }
 }

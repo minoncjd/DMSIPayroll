@@ -35,14 +35,14 @@ namespace DMSIPayroll
 
                 using (var db = new DMSIPayrollEntities())
                 {
-                    var holidays = db.Holidays.ToList();
+                    var holidays = db.Holidays.Where(m=>m.EmployeeID == empid).ToList();
                     lHoliday = new List<DMSIClass._Holiday>();
                     foreach (var x in holidays)
                     {
                         DMSIClass._Holiday holiday = new DMSIClass._Holiday();
                         var holidaytype = db.HolidayTypes.Where(m => m.HolidayTypeID == x.HolidayTypeID).FirstOrDefault();
                         var emp = db.Employees.Where(m => m.EmployeeID == x.EmployeeID).FirstOrDefault();
-                        var position = db.EmployeePositions.Where(m => m.EmployeePositionID == emp.EmployeeID).FirstOrDefault();
+                        var position = db.EmployeePositions.Where(m => m.EmployeePositionID == emp.EmployeePositionID).FirstOrDefault();
                         holiday.HolidayType = holidaytype.Description;
                         holiday.HolidayID = x.HolidayID;
                         holiday.HolidayPeriod = x.StDate.ToShortDateString() + " - " + x.ToDate.ToShortDateString();

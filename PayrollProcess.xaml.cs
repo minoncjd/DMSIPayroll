@@ -110,15 +110,17 @@ namespace DMSIPayroll
                         payroll.BasicRate = position == null ? 0 : position.DailyRate;
                         payroll.BasicNoOfDays = income == null ? 0 : income.Sum(m => m.NoOfDays);
                         payroll.BasicAmount = payroll.BasicRate * payroll.BasicNoOfDays;
-                        payroll.NightDiff = nightdiff == null ? 0 : nightdiff.Sum(m => m.Amount);
-                        payroll.OverTime = overtime == null ? 0 : overtime.Sum(m => m.Amount);
+                        payroll.NightDiffamount = nightdiff == null ? 0 : nightdiff.Sum(m => m.Amount);
+                        payroll.NightDiffHours = nightdiff == null ? 0 : nightdiff.Sum(m => m.Value);
+                        payroll.OTAmount = overtime == null ? 0 : overtime.Sum(m => m.Amount);
+                        payroll.OTHours = overtime == null ? 0 : overtime.Sum(m => m.Value);
                         payroll.HolidayNoOfDays = holiday == null ? 0 : holiday.Sum(m => m.NoOfDays);
                         payroll.HolidayAmount = holiday == null ? 0 : holiday.Sum(m => m.Amount);
                         payroll.LateUndertimeAmount = tardy == null ? 0 : tardy.Sum(M => M.Amount);
                         payroll.LateUndertimeNoOfMins = tardy == null ? 0 : tardy.Sum(m => m.Value);
                         payroll.Adjustment = adjustment == null ? 0 : adjustment.Sum(m => m.Amount);
                         payroll.OtherInc = otherinc == null ? 0 : otherinc.Sum(m => m.Amount);
-                        payroll.Gross = (payroll.BasicAmount + payroll.HolidayAmount + payroll.OverTime + payroll.NightDiff) - payroll.LateUndertimeAmount;
+                        payroll.Gross = (payroll.BasicAmount + payroll.HolidayAmount + payroll.OTAmount + payroll.NightDiffamount) - payroll.LateUndertimeAmount;
 
 
                         payroll.Deduction = deduction == null ? 0 : deduction.Sum(m => m.Amortization);
@@ -185,6 +187,9 @@ namespace DMSIPayroll
                 payrollPost.deduction = deduction;
                 payrollPost.overtime = overtime;
                 payrollPost.nightdiff = nightdiff;
+                payrollPost.adjustment = adjustment;
+                payrollPost.leave = leave;
+                payrollPost.otherinc = otherinc;
                 payrollPost.ShowDialog();
             }
         }

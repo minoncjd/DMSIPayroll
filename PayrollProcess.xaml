@@ -93,8 +93,10 @@
                         <DataGridTextColumn Header="BASIC RATE" Width="auto" Binding="{Binding BasicRate, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="RP # OF DAYS" Width="auto" Binding="{Binding BasicNoOfDays, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="RP # OF AMOUNT" Width="auto" Binding="{Binding BasicAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="NIGHT DIFF" Width="auto" Binding="{Binding NightDiff, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="OVERTIME" Width="auto" Binding="{Binding OverTime, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ND # OF HOURS" Width="auto" Binding="{Binding NightDiffHours, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ND AMOUNT" Width="auto" Binding="{Binding NightDiffamount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OT # OF HRS" Width="auto" Binding="{Binding OTHours, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OT AMNT" Width="auto" Binding="{Binding OTAmount, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="HO NO. OF DAYS" Width="auto"  Binding="{Binding HolidayNoOfDays, StringFormat='###,###.##'}" />
                         <DataGridTextColumn Header="HO AMOUNT" Width="auto" Binding="{Binding HolidayAmount, StringFormat='###,###.##'}" />
                         <DataGridTextColumn Header="LATE/UT NO. OF MINS" Width="auto" Binding="{Binding LateUndertimeNoOfMins, StringFormat='###,###.##'}"/>

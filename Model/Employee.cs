@@ -23,8 +23,9 @@ namespace DMSIPayroll.Model
             this.Leaves = new HashSet<Leave>();
             this.Loans = new HashSet<Loan>();
             this.OtherIncomes = new HashSet<OtherIncome>();
-            this.Payrolls = new HashSet<Payroll>();
             this.Tardies = new HashSet<Tardy>();
+            this.Payrolls = new HashSet<Payroll>();
+            this.PayrollLogistics = new HashSet<PayrollLogistic>();
         }
     
         public int EmployeeID { get; set; }
@@ -67,8 +68,10 @@ namespace DMSIPayroll.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OtherIncome> OtherIncomes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tardy> Tardies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payroll> Payrolls { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tardy> Tardies { get; set; }
+        public virtual ICollection<PayrollLogistic> PayrollLogistics { get; set; }
     }
 }

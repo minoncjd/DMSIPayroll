@@ -96,14 +96,16 @@
                         <DataGridTextColumn Header="RP (1ST) AMT" Width="auto" Binding="{Binding RP1Amount, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn Header="RP (2ND) # OF TRIPS" Width="auto"  Binding="{Binding RP2NoOfTrips, StringFormat='###,###.##'}" />
                         <DataGridTextColumn Header="RP (2ND) AMT" Width="auto" Binding="{Binding RP2Amount, StringFormat='###,###.##'}" />
-                        <DataGridTextColumn Header="ND # OF HRS" Width="auto" Binding="{Binding LateUndertimeNoOfMins, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="ND AMNT" Width="auto" Binding="{Binding LateUndertimeAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="OT # OF HRS" Width="auto" Binding="{Binding LateUndertimeNoOfMins, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="OT AMNT" Width="auto" Binding="{Binding LateUndertimeAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="HO # OF DAYS" Width="auto" Binding="{Binding BasicNoOfDays, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="HO AMT" Width="auto" Binding="{Binding BasicAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="ADJUSTMENT" Width="auto" Binding="{Binding BasicAmount, StringFormat='###,###.##'}"/>
-                        <DataGridTextColumn Header="OTHER INC." Width="auto" Binding="{Binding BasicAmount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ND # OF HOURS" Width="auto" Binding="{Binding NightDiffHours, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ND AMOUNT" Width="auto" Binding="{Binding NightDiffamount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OT # OF HRS" Width="auto" Binding="{Binding OTHours, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OT AMNT" Width="auto" Binding="{Binding OTAmount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="HO # OF DAYS" Width="auto" Binding="{Binding HolidayNoOfDays, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="HO AMT" Width="auto" Binding="{Binding HolidayAmount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="LATE/UT NO. OF MINS" Width="auto" Binding="{Binding LateUndertimeNoOfMins, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="LATE/UT AMOUNT" Width="auto" Binding="{Binding LateUndertimeAmount, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="ADJUSTMENT" Width="auto" Binding="{Binding Adjustment, StringFormat='###,###.##'}"/>
+                        <DataGridTextColumn Header="OTHER INC." Width="auto" Binding="{Binding OtherInc, StringFormat='###,###.##'}"/>
                         <DataGridTextColumn FontWeight="UltraBold"  Header="GROSS" Width="auto" Binding="{Binding Gross, StringFormat='###,###.##'}"/>
                         
                         <DataGridTextColumn Header="SSS" Width="auto" Binding="{Binding SSS, StringFormat='###,###.##'}"/>

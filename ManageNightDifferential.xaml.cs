@@ -35,7 +35,7 @@ namespace DMSIPayroll
 
                 using (var db = new DMSIPayrollEntities())
                 {
-                    var nightdiffs = db.NightDifferentials.ToList();
+                    var nightdiffs = db.NightDifferentials.Where(m=>m.EmployeeID == empid).ToList();
                     lNightDiff = new List<DMSIClass._NightDiff>();
                     foreach (var x in nightdiffs)
                     {

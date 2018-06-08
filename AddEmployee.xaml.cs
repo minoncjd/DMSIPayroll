@@ -57,7 +57,7 @@ namespace DMSIPayroll
                     tbGuardianContactNo.Text = employee.GuardianContactNo;
                     tbContactNo.Text = employee.ContactNo;
                     tbHDMF.Text = employee.HMDF;
-                    
+                    tbRelationship.Text = employee.Relationship;
                     if (employee.Gender == "M")
                     {
                         rbMale.IsChecked = true;
@@ -165,6 +165,8 @@ namespace DMSIPayroll
                         employee.SSS = tbSSS.Text;
                         employee.Philhealth = tbPhilhealth.Text;
                         employee.Tin = tbTIN.Text;
+                        employee.HMDF = tbHDMF.Text;
+                        
                         
                         if (rbFemale.IsChecked == true)
                         {
@@ -219,7 +221,7 @@ namespace DMSIPayroll
                         employee.SSS = tbSSS.Text;
                         employee.Philhealth = tbPhilhealth.Text;
                         employee.Tin = tbTIN.Text;
-
+                        employee.HMDF = tbHDMF.Text;
                         if (rbFemale.IsChecked == true)
                         {
                             employee.Gender = "F";

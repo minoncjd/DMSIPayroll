@@ -17,33 +17,43 @@ namespace DMSIPayroll.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Payroll()
         {
+            this.Leaves1 = new HashSet<Leave>();
             this.PayrollDetails_Deduction = new HashSet<PayrollDetails_Deduction>();
             this.PayrollDetails_Loan = new HashSet<PayrollDetails_Loan>();
+            this.PayrollDetails_OtherIncome = new HashSet<PayrollDetails_OtherIncome>();
             this.Tardies = new HashSet<Tardy>();
-            this.Leaves = new HashSet<Leave>();
         }
     
         public int PayrollID { get; set; }
         public Nullable<int> PYTableID { get; set; }
         public int EmployeeID { get; set; }
-        public decimal BasicPay { get; set; }
-        public decimal Holiday { get; set; }
-        public decimal Adjustment { get; set; }
+        public decimal Income { get; set; }
+        public Nullable<decimal> NightDifferential { get; set; }
+        public Nullable<decimal> Overtime { get; set; }
+        public Nullable<decimal> Holiday { get; set; }
+        public Nullable<decimal> Tardiness { get; set; }
+        public Nullable<decimal> Adjustment { get; set; }
+        public Nullable<decimal> OtherIncome { get; set; }
         public decimal Gross { get; set; }
-        public decimal Premium { get; set; }
-        public decimal Deduction { get; set; }
-        public decimal Loan { get; set; }
+        public Nullable<decimal> PAGIBIG { get; set; }
+        public Nullable<decimal> PHILHEALTH { get; set; }
+        public Nullable<decimal> SSS { get; set; }
+        public Nullable<decimal> Loan { get; set; }
+        public Nullable<decimal> Deduction { get; set; }
+        public Nullable<decimal> Leaves { get; set; }
         public Nullable<decimal> Net { get; set; }
     
+        public virtual Employee Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Leave> Leaves1 { get; set; }
         public virtual PYTable PYTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PayrollDetails_Deduction> PayrollDetails_Deduction { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PayrollDetails_Loan> PayrollDetails_Loan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tardy> Tardies { get; set; }
+        public virtual ICollection<PayrollDetails_OtherIncome> PayrollDetails_OtherIncome { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Leave> Leaves { get; set; }
-        public virtual Employee Employee { get; set; }
+        public virtual ICollection<Tardy> Tardies { get; set; }
     }
 }
